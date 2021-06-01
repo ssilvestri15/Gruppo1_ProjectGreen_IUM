@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/page_1" android:enabled="true" android:icon="@drawable/baseline_home_black_24dp" android:title="Home"/>
+    <item android:id="@+id/page_2" android:enabled="true" android:icon="@drawable/baseline_people_black_24dp" android:title="Manifestazioni"/>
+    <item android:id="@+id/page_3" android:enabled="true" android:icon="@drawable/ic_donoazione" android:title="Donazioni"/>
+    <item android:id="@+id/page_4" android:enabled="true" android:icon="@drawable/baseline_account_circle_black_24dp" android:title="Profilo"/>
+</menu>

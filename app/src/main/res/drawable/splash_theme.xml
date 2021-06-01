@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" android:opacity="opaque">
+    <item android:drawable="@color/lime_100_alpha_100"/>
+    <item
+        android:gravity="center"
+        android:start="100dp"
+        android:end="100dp"
+        android:drawable="@drawable/ic_pg_logo"/>
+</layer-list>
