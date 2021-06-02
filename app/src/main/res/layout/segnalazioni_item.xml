@@ -65,7 +65,7 @@
                     app:cardElevation="0dp"
                     app:cardCornerRadius="20dp"
                     app:strokeColor="@color/grey_600"
-                    app:strokeWidth="0.8dp">
+                    app:strokeWidth="0.5dp">
 
                     <TextView
                         android:id="@+id/data_name"
@@ -84,7 +84,7 @@
                     app:cardElevation="0dp"
                     app:cardCornerRadius="20dp"
                     app:strokeColor="@color/grey_600"
-                    app:strokeWidth="0.8dp"
+                    app:strokeWidth="0.5dp"
                     android:layout_marginStart="3dp">
 
                     <LinearLayout
@@ -98,6 +98,7 @@
                         <ImageView
                             android:layout_width="24dp"
                             android:layout_height="24dp"
+                            android:layout_marginStart="7dp"
                             android:src="@drawable/baseline_people_black_24dp"/>
 
                         <TextView

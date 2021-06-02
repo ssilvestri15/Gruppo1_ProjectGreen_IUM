@@ -101,7 +101,7 @@ public class HomeFragment extends Fragment {
         ImageCarousel carousel = bottomSheetView.findViewById(R.id.carousel);
         carousel.registerLifecycle(getViewLifecycleOwner());
         carousel.setCarouselListener(new CarouselListener() {
-            @org.jetbrains.annotations.Nullable
+            @NotNull
             @Override
             public ViewBinding onCreateViewHolder(@NotNull LayoutInflater layoutInflater, @NotNull ViewGroup viewGroup) {
                 return ItemCustomFixedSizeLayout3Binding.inflate(layoutInflater, viewGroup, false);
