@@ -10,7 +10,8 @@
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/grey_200_alpha_100</item>
+        <item name="android:windowLightStatusBar">true</item>
         <!-- Customize your theme here. -->
         <item name="fontFamily">@font/euclid_circular</item>
     </style>
@@ -18,7 +19,18 @@
 
     <style name="SplashScreen" parent="Theme.ProjectGreen">
         <item name="android:statusBarColor">@color/lime_100_alpha_100</item>
-        <item name="android:windowLightStatusBar">true</item>
         <item name="android:windowBackground">@drawable/splash_theme</item>
     </style>
+
+    <!-- BottomSheetDialog personalizzato -->
+    <style name="BottomSheetDialogTheme" parent="Theme.Design.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetDialogStyle</item>
+        <item name="fontFamily">@font/euclid_circular</item>
+    </style>
+
+    <style name="BottomSheetDialogStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="fontFamily">@font/euclid_circular</item>
+    </style>
+
 </resources>
