@@ -103,6 +103,7 @@
             android:layout_margin="20dp"/>
 
         <TextView
+            android:id="@+id/txtRegistrazione"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Clicca qui"
@@ -111,7 +112,7 @@
             android:textStyle="bold"
             android:clickable="true"
             android:layout_gravity="center"
-            android:onClick="openFragmentRegistrazione"/>
+           />
 
 
 
