@@ -110,7 +110,8 @@
             android:textSize="18sp"
             android:textStyle="bold"
             android:clickable="true"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:onClick="openFragmentRegistrazione"/>
 
 
 
