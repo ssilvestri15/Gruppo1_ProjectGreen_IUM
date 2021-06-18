@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -50,6 +51,12 @@ public class MainActivity extends AppCompatActivity {
 
             return false;
         });
+
+    }
+    public void startLogIn(View v){
+        Intent i = new Intent(this , LoginActivity.class);
+        startActivity(i);
+
 
     }
 

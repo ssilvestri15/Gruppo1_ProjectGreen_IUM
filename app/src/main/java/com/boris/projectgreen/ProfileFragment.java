@@ -1,5 +1,6 @@
 package com.boris.projectgreen;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -14,6 +16,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class ProfileFragment extends Fragment {
 
     private FloatingActionButton fab;
+    private Button btnLogout;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -31,6 +34,7 @@ public class ProfileFragment extends Fragment {
         fab.setOnClickListener(view -> {
             Toast.makeText(getActivity(),"TESTO 2", Toast.LENGTH_SHORT).show();
         });
+
     }
 
     @Override
@@ -38,5 +42,12 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
         return v;
+    }
+
+    public void startLogOut(View v){
+        Intent i = new Intent(getContext() , LoginActivity.class);
+        startActivity(i);
+
+
     }
 }
