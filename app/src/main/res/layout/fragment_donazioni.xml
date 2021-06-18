@@ -117,6 +117,45 @@
                     android:layout_marginTop="12sp"
                     android:layout_marginBottom="12sp">
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <Button
+                            android:id="@+id/btn_Meno"
+                            android:layout_width="50sp"
+                            android:layout_height="50sp"
+                            android:text="-"
+                            android:textSize="18sp"
+                            android:layout_marginLeft="12sp"
+                            android:layout_marginRight="8sp"
+                            android:background="@drawable/circle_button"
+                            android:backgroundTint="@color/dark_green"/>
+
+                        <Button
+                            android:id="@+id/btn_Imp"
+                            android:layout_width="80sp"
+                            android:layout_height="80sp"
+                            android:text="15 €"
+                            android:textSize="18sp"
+                            android:background="@drawable/circle_button"
+                            android:backgroundTint="@color/dark_green"/>
+
+                        <Button
+                            android:id="@+id/btn_Piu"
+                            android:layout_width="50sp"
+                            android:layout_height="50sp"
+                            android:text="+"
+                            android:textSize="20sp"
+                            android:layout_marginLeft="8sp"
+                            android:layout_marginRight="12sp"
+                            android:background="@drawable/circle_button"
+                            android:backgroundTint="@color/dark_green"/>
+                    </LinearLayout>
+
+
 
 
                 </LinearLayout>
