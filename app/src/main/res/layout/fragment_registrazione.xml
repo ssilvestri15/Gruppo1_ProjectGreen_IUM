@@ -25,117 +25,136 @@
             app:cardCornerRadius="20dp"
             app:cardElevation="0dp" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_gravity="center"
-            android:id="@+id/fotoProfilo"
-            android:src="@drawable/profile"
-            android:layout_marginBottom="15dp"
-            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="12sp"
+            android:layout_marginBottom="6sp"
+            android:layout_gravity="center">
 
-        <ImageButton
-            android:id="@+id/btnAddPhoto"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_gravity="end"
-            android:layout_marginTop="10dp"
-            android:background="@color/white"
-            android:clickable="true"
-            android:src="@drawable/ic_baseline_add_photo_alternate_24"
-            />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:id="@+id/fotoProfilo"
+                android:src="@drawable/profile"/>
 
-        <ImageButton
-            android:id="@+id/btnTakePhoto"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_gravity="end"
-            android:layout_marginTop="10dp"
-            android:background="@color/white"
-            android:clickable="true"
-            android:src="@drawable/ic_baseline_camera_alt_24"
-           />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginLeft="12sp"
+                android:gravity="bottom">
+
+                <ImageButton
+                    android:id="@+id/btnAddPhoto"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:clickable="true"
+                    android:src="@drawable/ic_baseline_image_24"
+                    />
+
+                <ImageButton
+                    android:id="@+id/btnTakePhoto"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:clickable="true"
+                    android:src="@drawable/ic_baseline_camera_alt_24"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/txtFieldNome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:errorEnabled="true"
             android:hint="Nome">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtFieldNome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/txtFieldCognome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:hint="Cognome">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtFieldCognome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/txtFieldCitta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:hint="Città">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtFieldCitta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/txtFieldIndirizzo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:hint="Indirizzo">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtFieldIndirizzo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/txtFieldDaraNascita"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:hint="Data di nascita">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtFieldDaraNascita"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:inputType="date"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/txtFieldEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:hint="Email">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtFieldEmail"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/txtFieldPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -143,26 +162,14 @@
             app:endIconMode="password_toggle">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtFieldPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/txtFieldRipPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:hint="Ripeti password"
-            app:endIconMode="password_toggle">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -176,8 +183,9 @@
                 android:text="Sei un volontario?" />
 
             <Switch
+                android:id="@+id/switchVolontario"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"/>
         </LinearLayout>
 
         <LinearLayout
@@ -192,13 +200,14 @@
                 android:text="Sei un Dipendente comunale?" />
 
             <Switch
+                android:id="@+id/switchDipComunale"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right" />
         </LinearLayout>
 
         <Button
-            android:id="@+id/btnReg"
+            android:id="@+id/btnRegistrazione"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -207,7 +216,6 @@
             android:text="Registrati"
             android:textColor="@color/white"
             android:textStyle="bold" />
-
 
     </LinearLayout>
 </FrameLayout>

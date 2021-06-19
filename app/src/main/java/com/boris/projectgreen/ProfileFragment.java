@@ -19,7 +19,6 @@ public class ProfileFragment extends Fragment {
     private Button btnLogout;
 
     public ProfileFragment() {
-        // Required empty public constructor
     }
 
     public static ProfileFragment newInstance() {
@@ -34,12 +33,10 @@ public class ProfileFragment extends Fragment {
         fab.setOnClickListener(view -> {
             Toast.makeText(getActivity(),"TESTO 2", Toast.LENGTH_SHORT).show();
         });
-
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
         return v;
     }
@@ -47,7 +44,5 @@ public class ProfileFragment extends Fragment {
     public void startLogOut(View v){
         Intent i = new Intent(getContext() , LoginActivity.class);
         startActivity(i);
-
-
     }
 }

@@ -39,45 +39,31 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity {
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         replaceFragment(HomeFragment.newInstance());
-
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation_bar);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
-
             switch (item.getItemId()) {
-
                 case R.id.page_1:
                     replaceFragment(HomeFragment.newInstance());
                     return true;
-
                 case R.id.page_2:
                     replaceFragment(ManifestazioniFragment.newInstance());
                     return true;
-
                 case R.id.page_3:
                     replaceFragment(DonazioniFragment.newInstance());
                     return true;
-
                 case R.id.page_4:
                     replaceFragment(ProfileFragment.newInstance());
                     return true;
-
                 default:
                     break;
             }
-
             return false;
         });
-
     }
 
 
@@ -86,8 +72,6 @@ public class MainActivity extends AppCompatActivity {
     public void startLogIn(View v){
         Intent i = new Intent(this , LoginActivity.class);
         startActivity(i);
-
-
     }
 
     private void replaceFragment(Fragment fragment) {
@@ -96,20 +80,14 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void hideNavBar(boolean hide) {
-
         runOnUiThread(() -> {
-
             FloatingActionButton fab = findViewById(R.id.floating_action_button);
-
             fab.animate().translationX((hide) ? 200 : 0).setDuration(300);
             fab.setVisibility((hide) ? View.GONE : View.VISIBLE);
-
         });
     }
 
     public FloatingActionButton getFab() {
         return findViewById(R.id.floating_action_button);
     }
-
-
 }
