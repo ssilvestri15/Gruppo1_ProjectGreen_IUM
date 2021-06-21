@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/imgCopertina"
+            android:layout_width="match_parent"
+            android:layout_height="160sp"
+            android:src="@drawable/ambiente"
+            android:scaleType="centerCrop"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+           <TextView
+               android:id="@+id/txtNomeManifestazione"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="Manifestazione per l'ambiente"
+               android:textSize="22sp"
+               android:textColor="@color/black"
+               android:layout_margin="8sp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginRight="8sp"
+                android:layout_marginLeft="8sp"
+                android:layout_marginBottom="8sp">
+
+                <ImageView
+                    android:layout_width="18sp"
+                    android:layout_height="18sp"
+                    android:layout_marginRight="8sp"
+                    android:src="@drawable/ic_baseline_place_24"/>
+
+                <TextView
+                    android:id="@+id/txtLuogo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Piazza plebisicito, Napoli"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginRight="8sp"
+                android:layout_marginLeft="8sp"
+                android:layout_marginBottom="8sp">
+
+                <ImageView
+                    android:layout_width="18sp"
+                    android:layout_height="18sp"
+                    android:layout_marginRight="8sp"
+                    android:src="@drawable/ic_baseline_calendar_24"/>
+
+                <TextView
+                    android:id="@+id/txtData"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Giovedì, 3 Giugno 2021"
+                    android:textSize="14sp"
+                    android:layout_marginRight="22sp"
+                    android:textColor="@color/black"/>
+
+                <ImageView
+                    android:layout_width="18sp"
+                    android:layout_height="18sp"
+                    android:layout_marginRight="8sp"
+                    android:src="@drawable/ic_baseline_time_24"/>
+
+                <TextView
+                    android:id="@+id/txtOra"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="15:30"
+                    android:textSize="14sp"
+                    android:layout_marginRight="22sp"
+                    android:textColor="@color/black"/>
+
+                <ImageView
+                    android:layout_width="18sp"
+                    android:layout_height="18sp"
+                    android:layout_marginRight="8sp"
+                    android:src="@drawable/ic_baseline_people_24"/>
+
+                <TextView
+                    android:id="@+id/txtPartecipanti"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="15"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8sp"
+                android:layout_marginLeft="8sp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnMiPiace"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:textAllCaps="false"
+                    android:text="Mi piace"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:drawableLeft="@drawable/ic_like_outline_24"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnPartecipa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:textAllCaps="false"
+                    android:text="Partecipa"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:drawableLeft="@drawable/ic_baseline_star_outline_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCondividi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:textAllCaps="false"
+                    android:text="Condividi"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:drawableLeft="@drawable/ic_baseline_share_24"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

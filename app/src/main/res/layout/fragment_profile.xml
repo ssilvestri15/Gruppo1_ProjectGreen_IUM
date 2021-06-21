@@ -11,15 +11,41 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Profilo"
-            android:textColor="@color/black"
-            android:textSize="34sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_marginTop="12dp"/>
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Profilo"
+                android:textColor="@color/black"
+                android:textSize="34sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+            <ImageButton
+                android:id="@+id/btnLogout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:clickable="true"
+                android:gravity="right"
+                android:onClick="startLogIn"
+                android:layout_marginRight="12sp"
+                android:src="@drawable/ic_baseline_logout_24"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
@@ -246,25 +272,14 @@
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/btnDiventaVolontario"
+        <com.google.android.material.button.MaterialButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Diventa un volontario"
-            android:layout_marginTop="20dp"
             android:layout_gravity="center"
-            android:backgroundTint="#3ea851"
-            android:drawableRight="@drawable/star_icon" />
-
-        <Button
-            android:id="@+id/btnLogout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Logout"
-            android:layout_gravity="center"
+            app:cornerRadius="20sp"
             android:layout_marginTop="20dp"
-            android:onClick="startLogIn"/>
-
+            android:drawableRight="@drawable/star_icon"/>
 
     </LinearLayout>
 
