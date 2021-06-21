@@ -72,9 +72,7 @@ public class BottomSheetRegistrazione extends BottomSheetDialogFragment {
         sVolotario = view.findViewById(R.id.switchVolontario);
         sDipComunale = view.findViewById(R.id.switchDipComunale);
         btnRegistrazione = view.findViewById(R.id.btnRegistrazione);
-        btnRegistrazione.setOnClickListener(v -> {
-            if(controllaCampi());
-        });
+        btnRegistrazione.setOnClickListener(v -> controllaCampi());
 
         btnPhoto.setOnClickListener(v -> askCameraPermission());
         btnGallery.setOnClickListener(v -> {
@@ -85,10 +83,38 @@ public class BottomSheetRegistrazione extends BottomSheetDialogFragment {
         return view;
     }
 
-    private boolean controllaCampi() {
-        String pass;
-        if(nome.getText().equals("")) nome.setError("Campo richiesto");
-        return false;
+    private void controllaCampi() {
+        if(nome.getText().toString().equals("")) nome.setError("Campo richiesto");
+        if(cognome.getText().toString().equals("")) cognome.setError("Campo richiesto");
+        if(citta.getText().toString().equals("")) citta.setError("Campo richiesto");
+        if(indirizzo.getText().toString().equals("")) indirizzo.setError("Campo richiesto");
+        if(email.getText().toString().equals("")) email.setError("Campo richiesto");
+        String pass = password.getText().toString();
+        if(controlloPassword(pass));
+    }
+
+    private boolean controlloPassword(String p) {
+        boolean caratteri = false;
+        boolean numeri = false;
+        if(p.length() < 8) {
+            password.setError("Inserisci almeno 8 caratteri.");
+            return false;
+        }
+        for(int i=0; i<p.length(); i++) {
+            if((p.charAt(i) >= 'A' && p.charAt(i) <= 'Z') || (p.charAt(i) >= 'a' && p.charAt(i) <= 'z')) caratteri = true;
+        }
+        if(!caratteri) {
+            password.setError("Inserisci almeno un carattere");
+            return false;
+        }
+        for(int i=0; i<p.length(); i++) {
+            if((p.charAt(i) >= '0' && p.charAt(i) <= '9')) numeri = true;
+        }
+        if(!numeri) {
+            password.setError("Inserisci almeno un numero.");
+            return false;
+        }
+        return true;
     }
 
     private void askCameraPermission() {
@@ -106,9 +132,7 @@ public class BottomSheetRegistrazione extends BottomSheetDialogFragment {
             try{
                 foto = createImageFile();
             }catch (IOException e ){
-
             }
-
             if (foto != null){
                 Uri photoURI = FileProvider.getUriForFile(getContext(),"net.smallacademy.android.fileprovider", foto);
                 i.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);

@@ -77,7 +77,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:errorEnabled="true"
             android:hint="Nome">
 
             <com.google.android.material.textfield.TextInputEditText
