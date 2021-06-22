@@ -9,14 +9,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import org.w3c.dom.Text;
 
 public class ProfileFragment extends Fragment {
 
     private FloatingActionButton fab;
     private Button btnLogout;
+    private TextView nomeUtente;
 
     public ProfileFragment() {
     }
@@ -33,11 +37,14 @@ public class ProfileFragment extends Fragment {
         fab.setOnClickListener(view -> {
             Toast.makeText(getActivity(),"TESTO 2", Toast.LENGTH_SHORT).show();
         });
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
+        nomeUtente = v.findViewById(R.id.nomeUtente);
         return v;
     }
 

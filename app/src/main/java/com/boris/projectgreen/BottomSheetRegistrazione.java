@@ -34,6 +34,7 @@ import org.jetbrains.annotations.NotNull;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -48,6 +49,8 @@ public class BottomSheetRegistrazione extends BottomSheetDialogFragment {
     private TextInputEditText nome, cognome, citta, indirizzo, dataDiNascita, email, password;
     private Switch sVolotario, sDipComunale;
     private Button btnRegistrazione;
+    private Utente utente;
+    public  ListaUtenti utenti;
 
     public BottomSheetRegistrazione() {
     }
@@ -57,7 +60,7 @@ public class BottomSheetRegistrazione extends BottomSheetDialogFragment {
     @Override
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_registrazione, container, false);
-
+        utenti = new ListaUtenti();
         btnGallery = view.findViewById(R.id.btnAddPhoto);
         btnPhoto = view.findViewById(R.id.btnTakePhoto);
         imgProfilo = view.findViewById(R.id.fotoProfilo);
@@ -90,7 +93,21 @@ public class BottomSheetRegistrazione extends BottomSheetDialogFragment {
         if(indirizzo.getText().toString().equals("")) indirizzo.setError("Campo richiesto");
         if(email.getText().toString().equals("")) email.setError("Campo richiesto");
         String pass = password.getText().toString();
-        if(controlloPassword(pass));
+        int ruolo = 0;
+        if(sVolotario.isChecked()) ruolo = 1;
+        if(sDipComunale.isChecked()) ruolo = 2;
+        if(controlloPassword(pass)) {
+            ArrayList<Integer> immagine = new ArrayList<>();
+            immagine.add(R.drawable.carmine);
+            utente = new Utente(nome.getText().toString(), cognome.getText().toString(), indirizzo.getText().toString(), citta.getText().toString(), dataDiNascita.getText().toString(), email.getText().toString(), pass, immagine, ruolo);
+            if(utenti.aggiungiUtente(utente)) {
+                Toast.makeText(getContext(), "Benvenuto su Project Green!", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent();
+                intent.putExtra("utente", 0);
+
+            }
+            else Toast.makeText(getContext(), "Utente già registrato.", Toast.LENGTH_LONG).show();
+        }
     }
 
     private boolean controlloPassword(String p) {
