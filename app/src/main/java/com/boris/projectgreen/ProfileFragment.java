@@ -1,5 +1,6 @@
 package com.boris.projectgreen;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -45,6 +46,9 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
         nomeUtente = v.findViewById(R.id.nomeUtente);
+
+        Utente c = Utente.cerca(getActivity());
+
         return v;
     }
 

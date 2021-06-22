@@ -3,6 +3,7 @@ package com.boris.projectgreen;
 import android.Manifest;
 import android.app.Activity;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -100,13 +101,8 @@ public class BottomSheetRegistrazione extends BottomSheetDialogFragment {
             ArrayList<Integer> immagine = new ArrayList<>();
             immagine.add(R.drawable.carmine);
             utente = new Utente(nome.getText().toString(), cognome.getText().toString(), indirizzo.getText().toString(), citta.getText().toString(), dataDiNascita.getText().toString(), email.getText().toString(), pass, immagine, ruolo);
-            if(utenti.aggiungiUtente(utente)) {
-                Toast.makeText(getContext(), "Benvenuto su Project Green!", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent();
-                intent.putExtra("utente", 0);
+            Utente.salva(getActivity(),utente);
 
-            }
-            else Toast.makeText(getContext(), "Utente già registrato.", Toast.LENGTH_LONG).show();
         }
     }
 

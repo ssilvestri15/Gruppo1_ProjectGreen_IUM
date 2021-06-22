@@ -1,8 +1,12 @@
 package com.boris.projectgreen;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
+
 
 public class Utente {
     private String nome;
@@ -14,6 +18,7 @@ public class Utente {
     private String password;
     private ArrayList<Integer> fotoProfilo;
     private int ruolo;
+    private static SharedPreferences s;
 
     public Utente() {
     }
@@ -122,5 +127,34 @@ public class Utente {
         if (o == null || getClass() != o.getClass()) return false;
         Utente utente = (Utente) o;
         return Objects.equals(email, utente.email);
+    }
+
+    public static void salva(Context c, Utente x){
+        s = c.getSharedPreferences("utente", Context.MODE_PRIVATE);
+        SharedPreferences.Editor e = s.edit();
+        e.putString("nome", x.getNome());
+        e.putString("cognome", x.getCognome());
+        e.putString("citta", x.getCitta());
+        e.putString("indirizzo", x.getIndirizzo());
+        e.putString("nascita", x.getDataNascita());
+        e.putString("email", x.getEmail());
+        e.putString("password", x.getPassword());
+        e.putInt("ruolo", x.getRuolo());
+        e.apply();
+    }
+
+    public static Utente cerca(Context c){
+        SharedPreferences s = c.getSharedPreferences("utente", Context.MODE_PRIVATE);
+        Utente u = new Utente();
+        u.setNome(s.getString("nome", ""));
+        u.setCognome(s.getString("cognome", ""));
+        u.setCitta(s.getString("citta",""));
+        u.setIndirizzo(s.getString("indirizzo",""));
+        u.setEmail( s.getString("email",""));
+        u.setDataNascita(s.getString("nascita",""));
+        u.setRuolo(s.getInt("ruolo",0));
+        u.setPassword(s.getString("password",""));
+        return u;
+
     }
 }
