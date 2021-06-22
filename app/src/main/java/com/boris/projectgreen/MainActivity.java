@@ -44,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Utente c = Utente.cerca(getApplication());
+        Log.d("LOG", c.getNome() + " " + c.getCognome());
+        if(c.getEmail().equals("")) startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+
         replaceFragment(HomeFragment.newInstance());
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation_bar);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
@@ -65,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
             }
             return false;
         });
+
     }
 
 

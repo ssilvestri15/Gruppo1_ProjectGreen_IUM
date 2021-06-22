@@ -16,14 +16,13 @@ public class Utente {
     private String dataNascita;
     private String email;
     private String password;
-    private ArrayList<Integer> fotoProfilo;
     private int ruolo;
     private static SharedPreferences s;
 
     public Utente() {
     }
 
-    public Utente(String nome, String cognome, String indirizzo, String citta, String dataNascita, String email, String password, ArrayList<Integer> fotoProfilo, int ruolo) {
+    public Utente(String nome, String cognome, String indirizzo, String citta, String dataNascita, String email, String password, int ruolo) {
         this.nome = nome;
         this.cognome = cognome;
         this.indirizzo = indirizzo;
@@ -32,7 +31,6 @@ public class Utente {
         this.email = email;
         this.password = password;
         this.ruolo = ruolo;
-        this.fotoProfilo = fotoProfilo;
     }
 
     public String getNome() {
@@ -97,14 +95,6 @@ public class Utente {
 
     public void setRuolo(int ruolo) {
         this.ruolo = ruolo;
-    }
-
-    public ArrayList<Integer> getFotoProfilo() {
-        return fotoProfilo;
-    }
-
-    public void setFotoProfilo(ArrayList<Integer> fotoProfilo) {
-        this.fotoProfilo = fotoProfilo;
     }
 
     @Override

@@ -80,10 +80,11 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_marginLeft="12dp">
 
                     <TextView
-                        android:id="@+id/nomeUtente"
+                        android:id="@+id/nomeUtenteFP"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Mariano"
@@ -93,7 +94,7 @@
                         android:textStyle="bold"/>
 
                     <TextView
-                        android:id="@+id/txtResidenza"
+                        android:id="@+id/txtResidenzaFP"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5sp"
@@ -103,7 +104,7 @@
                         android:textColor="@color/black"/>
 
                     <TextView
-                        android:id="@+id/txtAnni"
+                        android:id="@+id/txtAnniFP"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5sp"
@@ -113,7 +114,7 @@
                         android:textColor="@color/black"/>
 
                     <TextView
-                        android:id="@+id/txtCategoria"
+                        android:id="@+id/txtCategoriaFP"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5sp"

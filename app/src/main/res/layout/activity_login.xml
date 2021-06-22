@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
+    android:padding="12sp"
     tools:context=".LoginActivity">
 
     <LinearLayout
@@ -22,64 +23,34 @@
             android:gravity="center"
             android:layout_margin="55dp"/>
 
-        <LinearLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_margin="15dp">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:hint="Email">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Username:"
-                android:textColor="@color/white"
-                android:textSize="18sp"/>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/inputloginUser"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtEmailLoing"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                >
+                android:inputType="textEmailAddress" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-        </LinearLayout>
-
-        <LinearLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_margin="15dp">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:hint="Password"
+            app:endIconMode="password_toggle">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Username:"
-                android:textColor="@color/white"
-                android:textSize="18sp"/>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/inputloginPass"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtPasswordLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                app:passwordToggleEnabled="true">
+                android:inputType="textPassword"/>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btnAccedi"
@@ -98,9 +69,8 @@
             android:text="Non sei ancora registrato?"
             android:textColor="@color/white"
             android:textSize="18sp"
-            android:textStyle="bold"
             android:layout_gravity="center"
-            android:layout_margin="20dp"/>
+            android:layout_margin="8dp"/>
 
         <TextView
             android:id="@+id/txtRegistrazione"
@@ -111,10 +81,7 @@
             android:textSize="18sp"
             android:textStyle="bold"
             android:clickable="true"
-            android:layout_gravity="center"
-           />
-
-
+            android:layout_gravity="center"/>
 
     </LinearLayout>
 
