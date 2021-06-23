@@ -81,6 +81,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
+                    android:gravity="center"
                     android:layout_marginLeft="12dp">
 
                     <TextView
@@ -89,7 +90,7 @@
                         android:layout_height="wrap_content"
                         android:text="Mariano"
                         android:textAlignment="center"
-                        android:textSize="24sp"
+                        android:textSize="18sp"
                         android:textColor="@color/black"
                         android:textStyle="bold"/>
 
@@ -100,7 +101,7 @@
                         android:layout_marginTop="5sp"
                         android:text="Salerno (SA)"
                         android:textAlignment="center"
-                        android:textSize="18sp"
+                        android:textSize="14sp"
                         android:textColor="@color/black"/>
 
                     <TextView
@@ -110,7 +111,7 @@
                         android:layout_marginTop="5sp"
                         android:text="50 anni"
                         android:textAlignment="center"
-                        android:textSize="18sp"
+                        android:textSize="14sp"
                         android:textColor="@color/black"/>
 
                     <TextView
@@ -120,7 +121,7 @@
                         android:layout_marginTop="5sp"
                         android:text="Cittadino"
                         android:textAlignment="center"
-                        android:textSize="18sp"
+                        android:textSize="14sp"
                         android:textColor="@color/black"/>
 
                     <ImageButton
@@ -159,14 +160,15 @@
                 tools:ignore="MissingConstraints" />
 
             <TextView
-                android:id="@+id/txtLivello"
+                android:id="@+id/txtLivelloFP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5sp"
                 app:layout_constraintTop_toTopOf="@+id/progressBarLevel"
                 app:layout_constraintLeft_toLeftOf="@+id/progressBarLevel"
                 android:text= "Livello 4"
-                android:textAlignment="center"
+                android:textAlignment="viewStart"
+                android:paddingLeft="32sp"
                 android:textSize="18sp"
                 android:textColor="@color/white"/>
 

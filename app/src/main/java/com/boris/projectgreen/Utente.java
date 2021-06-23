@@ -17,12 +17,20 @@ public class Utente {
     private String email;
     private String password;
     private int ruolo;
+    private int livello;
+    private int progressiLivello;
+    private int segnalazione;
+    private int progressiSegnalazione;
+    private int donazione;
+    private int progressiDonazione;
+    private int partecipazioni;
+    private int progressiPartecipazioni;
     private static SharedPreferences s;
 
     public Utente() {
     }
 
-    public Utente(String nome, String cognome, String indirizzo, String citta, String dataNascita, String email, String password, int ruolo) {
+    public Utente(String nome, String cognome, String indirizzo, String citta, String dataNascita, String email, String password, int ruolo, int livello, int progressiLivello, int segnalazione, int progressiSegnalazione, int donazione, int progressiDonazione, int partecipazioni, int progressiPartecipazioni) {
         this.nome = nome;
         this.cognome = cognome;
         this.indirizzo = indirizzo;
@@ -31,6 +39,14 @@ public class Utente {
         this.email = email;
         this.password = password;
         this.ruolo = ruolo;
+        this.livello = livello;
+        this.progressiLivello = progressiLivello;
+        this.segnalazione = segnalazione;
+        this.progressiSegnalazione = progressiSegnalazione;
+        this.donazione = donazione;
+        this.progressiDonazione = progressiDonazione;
+        this.partecipazioni = partecipazioni;
+        this.progressiPartecipazioni = progressiPartecipazioni;
     }
 
     public String getNome() {
@@ -97,6 +113,70 @@ public class Utente {
         this.ruolo = ruolo;
     }
 
+    public int getLivello() {
+        return livello;
+    }
+
+    public void setLivello(int livello) {
+        this.livello = livello;
+    }
+
+    public int getProgressiLivello() {
+        return progressiLivello;
+    }
+
+    public void setProgressiLivello(int progressiLivello) {
+        this.progressiLivello = progressiLivello;
+    }
+
+    public int getSegnalazione() {
+        return segnalazione;
+    }
+
+    public void setSegnalazione(int segnalazione) {
+        this.segnalazione = segnalazione;
+    }
+
+    public int getProgressiSegnalazione() {
+        return progressiSegnalazione;
+    }
+
+    public void setProgressiSegnalazione(int progressiSegnalazione) {
+        this.progressiSegnalazione = progressiSegnalazione;
+    }
+
+    public int getDonazione() {
+        return donazione;
+    }
+
+    public void setDonazione(int donazione) {
+        this.donazione = donazione;
+    }
+
+    public int getProgressiDonazione() {
+        return progressiDonazione;
+    }
+
+    public void setProgressiDonazione(int progressiDonazione) {
+        this.progressiDonazione = progressiDonazione;
+    }
+
+    public int getPartecipazioni() {
+        return partecipazioni;
+    }
+
+    public void setPartecipazioni(int partecipazioni) {
+        this.partecipazioni = partecipazioni;
+    }
+
+    public int getProgressiPartecipazioni() {
+        return progressiPartecipazioni;
+    }
+
+    public void setProgressiPartecipazioni(int progressiPartecipazioni) {
+        this.progressiPartecipazioni = progressiPartecipazioni;
+    }
+
     @Override
     public String toString() {
         return "Utente{" +
@@ -104,10 +184,18 @@ public class Utente {
                 ", cognome='" + cognome + '\'' +
                 ", indirizzo='" + indirizzo + '\'' +
                 ", citta='" + citta + '\'' +
-                ", dataNascita=" + dataNascita +
+                ", dataNascita='" + dataNascita + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", ruolo=" + ruolo +
+                ", livello=" + livello +
+                ", progressiLivello=" + progressiLivello +
+                ", segnalazione=" + segnalazione +
+                ", progressiSegnalazione=" + progressiSegnalazione +
+                ", donazione=" + donazione +
+                ", progressiDonazione=" + progressiDonazione +
+                ", partecipazioni=" + partecipazioni +
+                ", progressiPartecipazioni=" + progressiPartecipazioni +
                 '}';
     }
 
@@ -130,6 +218,14 @@ public class Utente {
         e.putString("email", x.getEmail());
         e.putString("password", x.getPassword());
         e.putInt("ruolo", x.getRuolo());
+        e.putInt("livello", x.getLivello());
+        e.putInt("progressiLivello", x.getProgressiLivello());
+        e.putInt("segnalazione", x.getSegnalazione());
+        e.putInt("progressisegnalazione", x.getProgressiSegnalazione());
+        e.putInt("donazione", x.getDonazione());
+        e.putInt("progressidonazione", x.getProgressiDonazione());
+        e.putInt("partecipazione", x.getPartecipazioni());
+        e.putInt("progressipartecipazione", x.getProgressiPartecipazioni());
         e.apply();
     }
 
@@ -144,6 +240,14 @@ public class Utente {
         u.setDataNascita(s.getString("nascita",""));
         u.setRuolo(s.getInt("ruolo",0));
         u.setPassword(s.getString("password",""));
+        u.setLivello(s.getInt("livello", 0));
+        u.setLivello(s.getInt("progressiLivello", 0));
+        u.setLivello(s.getInt("segnalazione", 0));
+        u.setLivello(s.getInt("progressisegnalazione", 0));
+        u.setLivello(s.getInt("donazione", 0));
+        u.setLivello(s.getInt("progressidonazione", 0));
+        u.setLivello(s.getInt("partecipazione", 0));
+        u.setLivello(s.getInt("progressipartecipazione", 0));
         return u;
 
     }

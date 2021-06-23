@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,7 +21,8 @@ import org.w3c.dom.Text;
 public class ProfileFragment extends Fragment {
     private FloatingActionButton fab;
     private Button btnLogout;
-    private TextView nomeUtente, citta, dataNascita, ruolo;
+    private TextView nomeUtente, citta, dataNascita, ruolo, livello;
+    private ProgressBar pbLivello, pbSegnalazioni, pbDonazioni, pbPartecipazioni;
 
     public ProfileFragment() {
     }
@@ -48,10 +50,25 @@ public class ProfileFragment extends Fragment {
         citta = v.findViewById(R.id.txtResidenzaFP);
         dataNascita = v.findViewById(R.id.txtAnniFP);
         ruolo = v.findViewById(R.id.txtCategoriaFP);
+        livello = v.findViewById(R.id.txtLivelloFP);
+        pbLivello = v.findViewById(R.id.progressBarLevel);
+        pbSegnalazioni = v.findViewById(R.id.progressSegnalazione);
+        pbDonazioni = v.findViewById(R.id.progressDonazione);
+        pbPartecipazioni = v.findViewById(R.id.progressPartecipazione);
+
         Utente c = Utente.cerca(getActivity());
         nomeUtente.setText(c.getNome() + " " + c.getCognome());
         citta.setText(c.getCitta());
         dataNascita.setText(c.getDataNascita());
+        livello.setText("Livello " + c.getLivello());
+        pbLivello.setMax(c.getLivello() * 2);
+        pbLivello.setProgress(c.getProgressiLivello(), true);
+        pbSegnalazioni.setMax(c.getSegnalazione() * 2);
+        pbSegnalazioni.setProgress(c.getProgressiSegnalazione(), true);
+        pbDonazioni.setMax(c.getDonazione() * 2);
+        pbDonazioni.setProgress(c.getProgressiDonazione(), true);
+        pbPartecipazioni.setMax(c.getPartecipazioni() * 2);
+        pbPartecipazioni.setProgress(c.getProgressiPartecipazioni(), true);
         int r = c.getRuolo();
         if(r == 0) ruolo.setText("Cittadino");
         else if(r == 1) ruolo.setText("Volontario");
