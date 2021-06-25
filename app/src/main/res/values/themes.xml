@@ -14,9 +14,16 @@
         <item name="android:windowLightStatusBar">true</item>
         <!-- Customize your theme here. -->
         <item name="fontFamily">@font/euclid_circular</item>
+        <item name="android:windowAnimationStyle">@style/animation</item>
     </style>
 
+    <!-- Animazione Alert Dialog -->
+    <style name="animation">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
 
+    </style>
+    
     <style name="SplashScreen" parent="Theme.ProjectGreen">
         <item name="android:statusBarColor">@color/lime_100_alpha_100</item>
         <item name="android:windowBackground">@drawable/splash_theme</item>
