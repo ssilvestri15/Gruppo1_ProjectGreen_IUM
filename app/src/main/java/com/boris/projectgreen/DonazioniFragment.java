@@ -121,10 +121,7 @@ public class DonazioniFragment extends Fragment {
         btnImportoPers = v.findViewById(R.id.btn_Imp);
         btnImportoPers.setBackgroundColor(Color.GRAY);
         btnPaga = v.findViewById(R.id.btnPagaConPayPal);
-        btnPaga.setOnClickListener(v13 -> {
-
-            dialog.show();
-        });
+        btnPaga.setOnClickListener(v13 -> dialog.show());
         return v;
     }
 }

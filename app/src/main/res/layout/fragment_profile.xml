@@ -276,12 +276,14 @@
         </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDiventaVolontario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Diventa un volontario"
             android:layout_gravity="center"
             app:cornerRadius="20sp"
             android:layout_marginTop="20dp"
+            android:visibility="invisible"
             android:drawableRight="@drawable/star_icon"/>
 
     </LinearLayout>

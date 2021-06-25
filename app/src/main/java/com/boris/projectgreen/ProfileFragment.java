@@ -20,7 +20,7 @@ import org.w3c.dom.Text;
 
 public class ProfileFragment extends Fragment {
     private FloatingActionButton fab;
-    private Button btnLogout;
+    private Button btnLogout, btnDiventaVolontario;
     private TextView nomeUtente, citta, dataNascita, ruolo, livello;
     private ProgressBar pbLivello, pbSegnalazioni, pbDonazioni, pbPartecipazioni;
 
@@ -46,6 +46,7 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
+        btnDiventaVolontario = v.findViewById(R.id.btnDiventaVolontario);
         nomeUtente = v.findViewById(R.id.nomeUtenteFP);
         citta = v.findViewById(R.id.txtResidenzaFP);
         dataNascita = v.findViewById(R.id.txtAnniFP);
@@ -70,7 +71,17 @@ public class ProfileFragment extends Fragment {
         pbPartecipazioni.setMax(c.getPartecipazioni() * 2);
         pbPartecipazioni.setProgress(c.getProgressiPartecipazioni(), true);
         int r = c.getRuolo();
-        if(r == 0) ruolo.setText("Cittadino");
+        if(r == 0) {
+            ruolo.setText("Cittadino");
+            btnDiventaVolontario.setVisibility(View.VISIBLE);
+            btnDiventaVolontario.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    BottomSheetDiventaVolontario bs = new BottomSheetDiventaVolontario();
+                    bs.show(getActivity().getSupportFragmentManager(), "HI");
+                }
+            });
+        }
         else if(r == 1) ruolo.setText("Volontario");
         else ruolo.setText("Dip. comunale");
         return v;
