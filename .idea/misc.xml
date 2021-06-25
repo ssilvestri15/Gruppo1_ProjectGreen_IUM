@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Carmine/StudioProjects/ProjectGreen_IUM/app/src/main/res/layout/bottom_sheet_manifestazione.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Carmine/StudioProjects/ProjectGreen_IUM/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Carmine/StudioProjects/ProjectGreen_IUM/app/src/main/res/layout/fragment_manifestazioni.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Carmine/StudioProjects/ProjectGreen_IUM/app/src/main/res/layout/item_custom_fixed_size_layout_3.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Carmine/StudioProjects/ProjectGreen_IUM/app/src/main/res/layout/manifestazioni_item.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Carmine/StudioProjects/ProjectGreen_IUM/app/src/main/res/layout/segnalazioni_item.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/nicol/Documents/Unisa/Interazione Uomo Macchina/Codex/app/src/main/res/drawable/ic_baseline_calendar_24.xml" value="0.382051282051282" />
         <entry key="..\:/Users/nicol/Documents/Unisa/Interazione Uomo Macchina/Codex/app/src/main/res/drawable/ic_baseline_place_24.xml" value="0.382051282051282" />
         <entry key="..\:/Users/nicol/Documents/Unisa/Interazione Uomo Macchina/Codex/app/src/main/res/drawable/ic_baseline_save_24.xml" value="0.382051282051282" />

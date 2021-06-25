@@ -21,8 +21,9 @@
             android:layout_margin="40dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcManifestazioni"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 

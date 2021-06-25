@@ -16,7 +16,7 @@ public class Utente {
     private String dataNascita;
     private String email;
     private String password;
-    private int ruolo;
+    private int ruolo; //1 = cittadino, 2 = volontario, 3 = d.comunale, 4 = v e dip.
     private int livello;
     private int progressiLivello;
     private int segnalazione;
