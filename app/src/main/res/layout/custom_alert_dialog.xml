@@ -18,7 +18,8 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:src="@drawable/flower"
-            android:layout_gravity="right"/>
+            android:layout_gravity="right"
+            android:layout_marginBottom="-12sp"/>
 
         <TextView
             android:id="@+id/txtTitolo"
