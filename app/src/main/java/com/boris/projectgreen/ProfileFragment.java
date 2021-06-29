@@ -1,26 +1,25 @@
 package com.boris.projectgreen;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
-import org.w3c.dom.Text;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ProfileFragment extends Fragment {
     private FloatingActionButton fab;
     private Button btnLogout, btnDiventaVolontario;
+    private ImageButton btnEdit;
     private TextView nomeUtente, citta, dataNascita, ruolo, livello;
     private ProgressBar pbLivello, pbSegnalazioni, pbDonazioni, pbPartecipazioni;
 
@@ -34,10 +33,10 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ((MainActivity) getActivity()).hideNavBar(false);
+        ((MainActivity) getActivity()).hideNavBar(true);
         fab = ((MainActivity) getActivity()).getFab();
         fab.setOnClickListener(view -> {
-            Toast.makeText(getActivity(),"TESTO 2", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "TESTO 2", Toast.LENGTH_SHORT).show();
         });
 
 
@@ -45,7 +44,9 @@ public class ProfileFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
+
         btnDiventaVolontario = v.findViewById(R.id.btnDiventaVolontario);
         nomeUtente = v.findViewById(R.id.nomeUtenteFP);
         citta = v.findViewById(R.id.txtResidenzaFP);
@@ -56,8 +57,17 @@ public class ProfileFragment extends Fragment {
         pbSegnalazioni = v.findViewById(R.id.progressSegnalazione);
         pbDonazioni = v.findViewById(R.id.progressDonazione);
         pbPartecipazioni = v.findViewById(R.id.progressPartecipazione);
+        btnEdit = v.findViewById(R.id.btnEditIcon);
+
+        updateUI(btnDiventaVolontario, nomeUtente, citta, dataNascita, ruolo, livello, pbLivello, pbSegnalazioni, pbDonazioni, pbPartecipazioni, btnEdit);
+
+        return v;
+    }
+
+    private void updateUI(Button btnDiventaVolontario, TextView nomeUtente, TextView citta, TextView dataNascita, TextView ruolo, TextView livello, ProgressBar pbLivello, ProgressBar pbSegnalazioni, ProgressBar pbDonazioni, ProgressBar pbPartecipazioni, ImageButton btnEdit) {
 
         Utente c = Utente.cerca(getActivity());
+
         nomeUtente.setText(c.getNome() + " " + c.getCognome());
         citta.setText(c.getCitta());
         dataNascita.setText(c.getDataNascita());
@@ -71,24 +81,47 @@ public class ProfileFragment extends Fragment {
         pbPartecipazioni.setMax(c.getPartecipazioni() * 2);
         pbPartecipazioni.setProgress(c.getProgressiPartecipazioni(), true);
         int r = c.getRuolo();
-        if(r == 0) {
-            ruolo.setText("Cittadino");
-            btnDiventaVolontario.setVisibility(View.VISIBLE);
-            btnDiventaVolontario.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+
+        switch (r) {
+
+            case 0:
+                ruolo.setText("Cittadino");
+                btnDiventaVolontario.setVisibility(View.VISIBLE);
+                btnDiventaVolontario.setOnClickListener(v1 -> {
                     BottomSheetDiventaVolontario bs = new BottomSheetDiventaVolontario();
                     bs.show(getActivity().getSupportFragmentManager(), "HI");
-                }
-            });
+                });
+                break;
+
+            case 1:
+                ruolo.setText("Volontario");
+                break;
+
+            case 2:
+                ruolo.setText("Dip. comunale");
+                break;
+
+            default:
+                ruolo.setText("Dip. comunale, Volontario");
+                break;
+
         }
-        else if(r == 1) ruolo.setText("Volontario");
-        else ruolo.setText("Dip. comunale");
-        return v;
+
+        btnEdit.setOnClickListener(v2 -> {
+            startActivityForResult(new Intent(getActivity(), EditProfile.class).putExtra("user", c), 1);
+        });
+
     }
 
-    public void startLogOut(View v){
-        Intent i = new Intent(getContext() , LoginActivity.class);
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == 1 && resultCode == 1){
+            updateUI(btnDiventaVolontario, nomeUtente, citta, dataNascita, ruolo, livello, pbLivello, pbSegnalazioni, pbDonazioni, pbPartecipazioni, btnEdit);
+        }
+    }
+
+    public void startLogOut(View v) {
+        Intent i = new Intent(getContext(), LoginActivity.class);
         startActivity(i);
     }
 }

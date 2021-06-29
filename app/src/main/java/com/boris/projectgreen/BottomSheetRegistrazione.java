@@ -109,6 +109,7 @@ public class BottomSheetRegistrazione extends BottomSheetDialogFragment {
         int ruolo = 0;
         if(sVolotario.isChecked()) ruolo = 1;
         if(sDipComunale.isChecked()) ruolo = 2;
+        if(sVolotario.isChecked() && sDipComunale.isChecked()) ruolo = 3;
         if(controlloPassword(password.getText().toString())) {
             utente = new Utente(nome.getText().toString(), cognome.getText().toString(), indirizzo.getText().toString(), citta.getText().toString(), dataDiNascita.getText().toString(), email.getText().toString(), password.getText().toString(), ruolo, 1, 0, 1, 0, 1, 0, 1, 0);
             Utente.salva(getActivity(),utente);

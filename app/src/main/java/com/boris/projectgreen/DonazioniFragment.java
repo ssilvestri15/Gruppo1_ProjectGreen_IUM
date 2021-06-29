@@ -3,6 +3,7 @@ package com.boris.projectgreen;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -47,10 +48,16 @@ public class DonazioniFragment extends Fragment {
         dialog.setContentView(R.layout.custom_alert_dialog);
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.setCancelable(false);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         dialog.getWindow().getAttributes().windowAnimations = R.style.animation;
-        titolo = v.findViewById(R.id.txtTitolo);
-        sottotiolo = v.findViewById(R.id.txtSottotitolo);
-        okay = v.findViewById(R.id.btnOkay);
+
+        titolo = dialog.findViewById(R.id.txtTitolo);
+        sottotiolo = dialog.findViewById(R.id.txtSottotitolo);
+        okay = dialog.findViewById(R.id.btnOkay);
+
+        okay.setOnClickListener( v1 -> {
+            dialog.dismiss();
+        });
 
         btnCinque = v.findViewById(R.id.btn_cinque);
         btnCinque.setBackgroundColor(Color.GRAY);

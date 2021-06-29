@@ -2,13 +2,16 @@ package com.boris.projectgreen;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
 
 
-public class Utente {
+public class Utente implements Parcelable {
+
     private String nome;
     private String cognome;
     private String indirizzo;
@@ -16,7 +19,7 @@ public class Utente {
     private String dataNascita;
     private String email;
     private String password;
-    private int ruolo; //1 = cittadino, 2 = volontario, 3 = d.comunale, 4 = v e dip.
+    private int ruolo; //0 = cittadino, 1 = volontario, 2 = d.comunale, 3 = v e dip.
     private int livello;
     private int progressiLivello;
     private int segnalazione;
@@ -48,6 +51,37 @@ public class Utente {
         this.partecipazioni = partecipazioni;
         this.progressiPartecipazioni = progressiPartecipazioni;
     }
+
+    protected Utente(Parcel in) {
+        nome = in.readString();
+        cognome = in.readString();
+        indirizzo = in.readString();
+        citta = in.readString();
+        dataNascita = in.readString();
+        email = in.readString();
+        password = in.readString();
+        ruolo = in.readInt();
+        livello = in.readInt();
+        progressiLivello = in.readInt();
+        segnalazione = in.readInt();
+        progressiSegnalazione = in.readInt();
+        donazione = in.readInt();
+        progressiDonazione = in.readInt();
+        partecipazioni = in.readInt();
+        progressiPartecipazioni = in.readInt();
+    }
+
+    public static final Creator<Utente> CREATOR = new Creator<Utente>() {
+        @Override
+        public Utente createFromParcel(Parcel in) {
+            return new Utente(in);
+        }
+
+        @Override
+        public Utente[] newArray(int size) {
+            return new Utente[size];
+        }
+    };
 
     public String getNome() {
         return nome;
@@ -250,5 +284,30 @@ public class Utente {
         u.setLivello(s.getInt("progressipartecipazione", 0));
         return u;
 
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(nome);
+        dest.writeString(cognome);
+        dest.writeString(indirizzo);
+        dest.writeString(citta);
+        dest.writeString(dataNascita);
+        dest.writeString(email);
+        dest.writeString(password);
+        dest.writeInt(ruolo);
+        dest.writeInt(livello);
+        dest.writeInt(progressiLivello);
+        dest.writeInt(segnalazione);
+        dest.writeInt(progressiSegnalazione);
+        dest.writeInt(donazione);
+        dest.writeInt(progressiDonazione);
+        dest.writeInt(partecipazioni);
+        dest.writeInt(progressiPartecipazioni);
     }
 }
