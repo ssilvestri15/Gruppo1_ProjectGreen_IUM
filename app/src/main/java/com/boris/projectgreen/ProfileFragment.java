@@ -2,6 +2,8 @@ package com.boris.projectgreen;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,13 +17,16 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.progressindicator.CircularProgressIndicator;
+import com.google.android.material.progressindicator.LinearProgressIndicator;
 
 public class ProfileFragment extends Fragment {
     private FloatingActionButton fab;
-    private Button btnLogout, btnDiventaVolontario;
-    private ImageButton btnEdit;
+    private Button btnDiventaVolontario;
+    private ImageButton btnEdit, btnLogout;
     private TextView nomeUtente, citta, dataNascita, ruolo, livello;
-    private ProgressBar pbLivello, pbSegnalazioni, pbDonazioni, pbPartecipazioni;
+    private LinearProgressIndicator pbLivello;
+    private CircularProgressIndicator pbSegnalazioni, pbDonazioni, pbPartecipazioni;
 
     public ProfileFragment() {
     }
@@ -58,6 +63,7 @@ public class ProfileFragment extends Fragment {
         pbDonazioni = v.findViewById(R.id.progressDonazione);
         pbPartecipazioni = v.findViewById(R.id.progressPartecipazione);
         btnEdit = v.findViewById(R.id.btnEditIcon);
+        btnLogout = v.findViewById(R.id.btnLogout);
 
         updateUI(btnDiventaVolontario, nomeUtente, citta, dataNascita, ruolo, livello, pbLivello, pbSegnalazioni, pbDonazioni, pbPartecipazioni, btnEdit);
 
@@ -67,19 +73,14 @@ public class ProfileFragment extends Fragment {
     private void updateUI(Button btnDiventaVolontario, TextView nomeUtente, TextView citta, TextView dataNascita, TextView ruolo, TextView livello, ProgressBar pbLivello, ProgressBar pbSegnalazioni, ProgressBar pbDonazioni, ProgressBar pbPartecipazioni, ImageButton btnEdit) {
 
         Utente c = Utente.cerca(getActivity());
-
         nomeUtente.setText(c.getNome() + " " + c.getCognome());
         citta.setText(c.getCitta());
         dataNascita.setText(c.getDataNascita());
-        livello.setText("Livello " + c.getLivello());
-        pbLivello.setMax(c.getLivello() * 2);
-        pbLivello.setProgress(c.getProgressiLivello(), true);
-        pbSegnalazioni.setMax(c.getSegnalazione() * 2);
-        pbSegnalazioni.setProgress(c.getProgressiSegnalazione(), true);
-        pbDonazioni.setMax(c.getDonazione() * 2);
-        pbDonazioni.setProgress(c.getProgressiDonazione(), true);
-        pbPartecipazioni.setMax(c.getPartecipazioni() * 2);
-        pbPartecipazioni.setProgress(c.getProgressiPartecipazioni(), true);
+        livello.setText("Livello 4");
+        pbLivello.setProgress(0);
+        pbSegnalazioni.setProgress(0);
+        pbDonazioni.setProgress(0);
+        pbPartecipazioni.setProgress(0);
         int r = c.getRuolo();
 
         switch (r) {
@@ -107,9 +108,22 @@ public class ProfileFragment extends Fragment {
 
         }
 
-        btnEdit.setOnClickListener(v2 -> {
-            startActivityForResult(new Intent(getActivity(), EditProfile.class).putExtra("user", c), 1);
-        });
+        final Handler handler = new Handler(Looper.getMainLooper());
+        handler.postDelayed(() -> {
+            pbLivello.setProgress(70, true);
+            pbSegnalazioni.setProgress(30, true);
+            pbDonazioni.setProgress(60, true);
+            pbPartecipazioni.setProgress(80, true);
+
+            btnLogout.setOnClickListener(v -> {
+                startLogOut();
+            });
+
+            btnEdit.setOnClickListener(v -> {
+                startActivityForResult(new Intent(getActivity(), EditProfile.class).putExtra("user", c), 1);
+            });
+
+        }, 100);
 
     }
 
@@ -120,8 +134,10 @@ public class ProfileFragment extends Fragment {
         }
     }
 
-    public void startLogOut(View v) {
+    public void startLogOut() {
+        Utente.delete(getContext());
         Intent i = new Intent(getContext(), LoginActivity.class);
         startActivity(i);
+        getActivity().finish();
     }
 }

@@ -263,6 +263,10 @@ public class Utente implements Parcelable {
         e.apply();
     }
 
+    public static void delete(Context c){
+        c.getSharedPreferences("utente", Context.MODE_PRIVATE).edit().clear().apply();
+    }
+
     public static Utente cerca(Context c){
         SharedPreferences s = c.getSharedPreferences("utente", Context.MODE_PRIVATE);
         Utente u = new Utente();
