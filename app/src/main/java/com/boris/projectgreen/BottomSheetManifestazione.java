@@ -17,7 +17,6 @@ public class BottomSheetManifestazione extends BottomSheetDialogFragment {
     private MaterialButton miPiace, partecipa, condividi;
 
     public BottomSheetManifestazione() {
-
     }
 
     @Nullable
