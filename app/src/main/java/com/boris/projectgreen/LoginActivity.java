@@ -37,7 +37,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class LoginActivity extends AppCompatActivity {
     private TextView txtRegistrazione;
-    private TextInputLayout email, password;
+    private TextInputEditText email, password;
     private Button accedi;
     private Utente utente;
 
@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
 
         utente = Utente.cerca(getApplicationContext());
         accedi.setOnClickListener(v -> {
-            if(email.getEditText().getText().toString().equals(utente.getEmail()) && password.getEditText().getText().toString().equals(utente.getPassword())) startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            if(email.getText().toString().equals(utente.getEmail()) && password.getText().toString().equals(utente.getPassword())) startActivity(new Intent(getApplicationContext(), MainActivity.class));
             else password.setError("Email o password errati. Riprova.");
         });
 

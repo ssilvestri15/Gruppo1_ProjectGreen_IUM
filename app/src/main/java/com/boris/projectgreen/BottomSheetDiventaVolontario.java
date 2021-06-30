@@ -18,7 +18,8 @@ import com.google.android.material.checkbox.MaterialCheckBox;
 
 public class BottomSheetDiventaVolontario extends BottomSheetDialogFragment {
     private MaterialCheckBox ccb1, ccb2, ccb3;
-    private MaterialButton btnProponiti;
+    private MaterialButton btnProponiti, okay;
+    private TextView titolo, sottotiolo;
     private Dialog dialog;
 
 
@@ -58,10 +59,21 @@ public class BottomSheetDiventaVolontario extends BottomSheetDialogFragment {
         dialog.setCancelable(false);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().getAttributes().windowAnimations = R.style.animation;
+        okay = dialog.findViewById(R.id.btnOkay);
+        titolo = dialog.findViewById(R.id.txtTitolo);
+        titolo.setText("GRAZIE!");
 
-        btnProponiti.setOnClickListener(v ->{
+        sottotiolo = dialog.findViewById(R.id.txtSottotitolo);
+        sottotiolo.setText("A breve riceverai una email con le istruzioni da seguire.");
+
+        okay.setOnClickListener( v1 -> {
+            dialog.dismiss();
+            this.dismiss();
+        });
+
+
+        btnProponiti.setOnClickListener(v -> {
             dialog.show();
-
         });
         return view;
     }
