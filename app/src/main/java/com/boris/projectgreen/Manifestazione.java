@@ -1,8 +1,11 @@
 package com.boris.projectgreen;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 
-public class Manifestazione {
+public class Manifestazione implements Parcelable {
     private String titolo;
     private String luogo;
     private String data;
@@ -90,5 +93,15 @@ public class Manifestazione {
 
     public void setImg(ArrayList<Integer> img) {
         this.img = img;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
     }
 }

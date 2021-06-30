@@ -1,16 +1,21 @@
 package com.boris.projectgreen;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
@@ -18,6 +23,7 @@ public class ManifestazioniFragment extends Fragment {
 
     private ArrayList<Manifestazione> listaManifestazioni;
     private RecyclerView rc;
+    private FloatingActionButton btnAdd;
 
 
     public ManifestazioniFragment() {
@@ -31,7 +37,30 @@ public class ManifestazioniFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ((MainActivity) getActivity()).hideNavBar(true);
+        Utente user = Utente.cerca(getActivity());
+        if(user.getRuolo() == 2 || user.getRuolo() == 3){
+            ((MainActivity) getActivity()).hideNavBar(false);
+            btnAdd =((MainActivity) getActivity()).getFab();
+            btnAdd.setOnClickListener( v -> {
+                openManifestazione();
+            });
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        getActivity();
+        if(requestCode == 1 && resultCode == Activity.RESULT_OK){
+            Manifestazione m = data.getExtras().getParcelable("manifestazione");
+            listaManifestazioni.add(m);
+
+        }
+
+    }
+
+    private void openManifestazione() {
+        startActivityForResult(new Intent(getActivity(), NuovaManifestazioneActivity.class), 1);
     }
 
     @Override
@@ -61,4 +90,5 @@ public class ManifestazioniFragment extends Fragment {
         bt.show();
 
     }
+
 }

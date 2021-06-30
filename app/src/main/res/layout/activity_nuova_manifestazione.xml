@@ -105,6 +105,7 @@
             android:textSize="16sp" />
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/addFoto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -118,6 +119,7 @@
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/copertina"
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:src="@drawable/ambiente"
