@@ -118,10 +118,10 @@ public class DonazioniFragment extends Fragment {
             btnCinque.setBackgroundColor(Color.GRAY);
             btnDieci.setBackgroundColor(Color.GRAY);
             btnQuindici.setBackgroundColor(Color.GRAY);
-            if(importo > 1) {
+            if(importo > 2) {
                 importo--;
                 btnImportoPers.setText(importo + " €");
-            } else btnImportoPers.setText(0 + " €");
+            } else btnImportoPers.setText(1 + " €");
             selezione = 4;
         });
 
