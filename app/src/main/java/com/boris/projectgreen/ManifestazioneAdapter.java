@@ -1,6 +1,5 @@
 package com.boris.projectgreen;
 
-import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -71,25 +70,34 @@ public class ManifestazioneAdapter extends RecyclerView.Adapter<ManifestazioneAd
             data.setText(m.getData());
             ora.setText(m.getOra());
             partecipanti.setText(m.getPartecipanti() + "");
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    listener.onItemClick(m);
+            itemView.setOnClickListener(v -> listener.onItemClick(m));
+
+            like.setOnClickListener(v -> {
+                if(!m.isLike()) {
+                    like.setTextColor(Color.parseColor("#3EA851"));
+                    like.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_iconfinder_icon, 0, 0, 0);
+                    m.setLike(true);
+                }
+                else {
+                    like.setTextColor(Color.BLACK);
+                    like.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_like_outline_24, 0, 0, 0);
+                    m.setLike(false);
                 }
             });
 
-            like.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(!m.isLike()) {
-                        like.setBackgroundColor(Color.parseColor("#3EA851"));
-                        m.setLike(true);
-                    }
-                    else {
-                        like.setBackgroundColor(Color.RED);
-                        m.setLike(false);
-                    }
-
+            partecipa.setOnClickListener(v -> {
+                if(!m.isPartecipa()) {
+                    partecipa.setTextColor(Color.parseColor("#3EA851"));
+                    partecipa.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_star_outline_green_24, 0, 0, 0);
+                    m.setPartecipanti(m.getPartecipanti() + 1);
+                    partecipanti.setText(m.getPartecipanti() + "");
+                    m.setPartecipa(true);
+                } else {
+                    partecipa.setTextColor(Color.BLACK);
+                    partecipa.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_star_outline_24, 0, 0, 0);
+                    m.setPartecipanti(m.getPartecipanti() - 1);
+                    partecipanti.setText(m.getPartecipanti() + "");
+                    m.setPartecipa(false);
                 }
             });
         }

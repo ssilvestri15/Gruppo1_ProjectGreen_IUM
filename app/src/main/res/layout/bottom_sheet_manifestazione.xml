@@ -102,7 +102,7 @@
             android:src="@drawable/ic_baseline_people_24" />
 
         <TextView
-            android:id="@+id/txtPartecipanti"
+            android:id="@+id/txtPartecipantiBS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="15"
@@ -118,7 +118,7 @@
         android:layout_marginLeft="8sp">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnMiPiace"
+            android:id="@+id/btnMiPiaceBS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.Button.TextButton"
@@ -131,7 +131,7 @@
             app:layout_constraintBottom_toBottomOf="parent"/>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnPartecipa"
+            android:id="@+id/btnPartecipaBS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.Button.TextButton"
@@ -145,7 +145,7 @@
             app:layout_constraintLeft_toLeftOf="parent"/>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnCondividi"
+            android:id="@+id/btnCondividiBS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.Button.TextButton"
