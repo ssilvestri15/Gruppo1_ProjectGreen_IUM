@@ -100,6 +100,11 @@ public class ProfileFragment extends Fragment {
 
             case 2:
                 ruolo.setText("Dip. comunale");
+                btnDiventaVolontario.setVisibility(View.VISIBLE);
+                btnDiventaVolontario.setOnClickListener(v1 -> {
+                    BottomSheetDiventaVolontario bs = new BottomSheetDiventaVolontario();
+                    bs.show(getActivity().getSupportFragmentManager(), "HI");
+                });
                 break;
 
             default:

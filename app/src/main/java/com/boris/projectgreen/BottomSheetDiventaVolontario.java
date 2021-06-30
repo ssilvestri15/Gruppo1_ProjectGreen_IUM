@@ -1,9 +1,13 @@
 package com.boris.projectgreen;
 
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,6 +19,9 @@ import com.google.android.material.checkbox.MaterialCheckBox;
 public class BottomSheetDiventaVolontario extends BottomSheetDialogFragment {
     private MaterialCheckBox ccb1, ccb2, ccb3;
     private MaterialButton btnProponiti;
+    private Dialog dialog;
+
+
 
     public BottomSheetDiventaVolontario() {
 
@@ -31,25 +38,30 @@ public class BottomSheetDiventaVolontario extends BottomSheetDialogFragment {
         btnProponiti.setClickable(false);
 
         ccb1.setOnClickListener(v -> {
-            if(ccb2.isChecked() && ccb3.isChecked()) btnProponiti.setClickable(true);
-            else btnProponiti.setClickable(false);
+            if(ccb2.isChecked() && ccb3.isChecked()) btnProponiti.setEnabled(true);
+            else btnProponiti.setEnabled(false);
         });
 
         ccb2.setOnClickListener(v -> {
-            if(ccb1.isChecked() && ccb3.isChecked()) btnProponiti.setClickable(true);
-            else btnProponiti.setClickable(false);
+            if(ccb1.isChecked() && ccb3.isChecked()) btnProponiti.setEnabled(true);
+            else btnProponiti.setEnabled(false);
         });
 
         ccb3.setOnClickListener(v -> {
-            if(ccb2.isChecked() && ccb1.isChecked()) btnProponiti.setClickable(true);
-            else btnProponiti.setClickable(false);
+            if(ccb2.isChecked() && ccb1.isChecked()) btnProponiti.setEnabled(true);
+            else btnProponiti.setEnabled(false);
         });
 
-        btnProponiti.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        dialog = new Dialog(getActivity());
+        dialog.setContentView(R.layout.custom_alert_dialog);
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.setCancelable(false);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.animation;
 
-            }
+        btnProponiti.setOnClickListener(v ->{
+            dialog.show();
+
         });
         return view;
     }
