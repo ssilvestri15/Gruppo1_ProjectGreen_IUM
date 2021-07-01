@@ -18,7 +18,7 @@ import com.google.android.material.checkbox.MaterialCheckBox;
 
 public class BottomSheetDiventaVolontario extends BottomSheetDialogFragment {
     private MaterialCheckBox ccb1, ccb2, ccb3;
-    private MaterialButton btnProponiti, okay;
+    private MaterialButton btnProponiti, okay, btn1;
     private TextView titolo, sottotiolo;
     private Dialog dialog;
 
@@ -37,6 +37,7 @@ public class BottomSheetDiventaVolontario extends BottomSheetDialogFragment {
         ccb3 = view.findViewById(R.id.ccb3);
         btnProponiti = view.findViewById(R.id.btnProponiti);
         btnProponiti.setClickable(false);
+        btn1 = view.findViewById(R.id.btnDiventaVolontario);
 
         ccb1.setOnClickListener(v -> {
             if(ccb2.isChecked() && ccb3.isChecked()) btnProponiti.setEnabled(true);

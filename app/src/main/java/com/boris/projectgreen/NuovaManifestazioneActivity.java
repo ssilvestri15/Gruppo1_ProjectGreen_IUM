@@ -40,9 +40,10 @@ public class NuovaManifestazioneActivity extends AppCompatActivity {
         m.setImg(Utils.getRandomImage());
 
         btnPubblica.setOnClickListener(v ->{
+            Utils.listaManifestazione.add(0, m);
             Intent i = new Intent();
-            i.putExtra("manifestazione", m);
-            setResult(1);
+            i.putExtra("OK", "OK");
+            setResult(1,i);
             finish();
         });
 

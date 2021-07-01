@@ -17,4 +17,5 @@ public class Utils {
 
     public static ArrayList<Segnalazione> listaSegnalazioni = null;
 
+    public static ArrayList<Manifestazione> listaManifestazione = null;
 }

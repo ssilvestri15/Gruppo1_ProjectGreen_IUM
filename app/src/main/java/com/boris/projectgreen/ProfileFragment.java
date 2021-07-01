@@ -47,6 +47,7 @@ public class ProfileFragment extends Fragment {
 
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -83,9 +84,12 @@ public class ProfileFragment extends Fragment {
         pbPartecipazioni.setProgress(0);
         int r = c.getRuolo();
 
+
+
         switch (r) {
 
             case 0:
+
                 ruolo.setText("Cittadino");
                 btnDiventaVolontario.setVisibility(View.VISIBLE);
                 btnDiventaVolontario.setOnClickListener(v1 -> {

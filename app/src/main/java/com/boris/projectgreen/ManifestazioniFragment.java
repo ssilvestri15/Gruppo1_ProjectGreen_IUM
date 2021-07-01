@@ -21,7 +21,6 @@ import java.util.ArrayList;
 
 public class ManifestazioniFragment extends Fragment {
 
-    private ArrayList<Manifestazione> listaManifestazioni;
     private RecyclerView rc;
     private FloatingActionButton btnAdd;
 
@@ -47,19 +46,22 @@ public class ManifestazioniFragment extends Fragment {
         }
     }
 
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        getActivity();
-        if(requestCode == 1 && resultCode == Activity.RESULT_OK){
-            Manifestazione m = data.getExtras().getParcelable("manifestazione");
-            listaManifestazioni.add(m);
+       if(requestCode == 1 && resultCode == Activity.RESULT_OK){
+           if(data != null && data.getExtras().get("OK").equals("OK")){
+               if(rc != null && rc.getAdapter() != null){
+                   rc.getAdapter().notifyDataSetChanged();
+               }
+           }
 
         }
 
     }
 
-    private void openManifestazione() {
+   private void openManifestazione() {
         startActivityForResult(new Intent(getActivity(), NuovaManifestazioneActivity.class), 1);
     }
 
@@ -68,14 +70,13 @@ public class ManifestazioniFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_manifestazioni, container, false);
+        if( Utils.listaManifestazione == null){
+            Utils.listaManifestazione = makeListManifestazione();
+        }
 
-        listaManifestazioni = new ArrayList<>();
-        listaManifestazioni.add(new Manifestazione("Sagra della Patata", "Via Piave, Avellino", "Mercoledì, 14 luglio 2021", "12:00", 45, false, false, Utils.getRandomImage()));
-        listaManifestazioni.add(new Manifestazione("Sagra della Cipolla", "Piazza Cavour, Avellino", "Venerdi, 23 luglio 2021", "15:00", 5, false, false, Utils.getRandomImage()));
-        listaManifestazioni.add(new Manifestazione("Sagra della Salsiccia", "Piazza Plebiscito, Picerno", "Mercoledì, 28 luglio 2021", "12:00", 30, false, false, Utils.getRandomImage()));
         rc = v.findViewById(R.id.rcManifestazioni);
         rc.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-        rc.setAdapter(new ManifestazioneAdapter(listaManifestazioni, this::onManifestazioneClicked));
+        rc.setAdapter(new ManifestazioneAdapter(Utils.listaManifestazione, this::onManifestazioneClicked));
         return v;
     }
 
@@ -88,7 +89,15 @@ public class ManifestazioniFragment extends Fragment {
         View bsv = LayoutInflater.from(getActivity()).inflate(R.layout.bottom_sheet_manifestazione, getActivity().findViewById(R.id.bottomSheetContainerManifestazione));
         bt.setContentView(bsv);
         bt.show();
+    }
 
+    private ArrayList<Manifestazione> makeListManifestazione(){
+        ArrayList<Manifestazione> listaManifestazioni = new ArrayList<>();
+        listaManifestazioni.add(new Manifestazione("Sagra della Patata", "Via Piave, Avellino", "Mercoledì, 14 luglio 2021", "12:00", 45, false, false, Utils.getRandomImage()));
+        listaManifestazioni.add(new Manifestazione("Sagra della Cipolla", "Piazza Cavour, Avellino", "Venerdi, 23 luglio 2021", "15:00", 5, false, false, Utils.getRandomImage()));
+        listaManifestazioni.add(new Manifestazione("Sagra della Salsiccia", "Piazza Plebiscito, Picerno", "Mercoledì, 28 luglio 2021", "12:00", 30, false, false, Utils.getRandomImage()));
+
+        return listaManifestazioni;
     }
 
 }
