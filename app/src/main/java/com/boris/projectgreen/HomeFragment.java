@@ -31,6 +31,7 @@ public class HomeFragment extends Fragment {
     private FloatingActionButton fab;
     private RecyclerView rv;
 
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -87,10 +88,17 @@ public class HomeFragment extends Fragment {
         openDetails(segnalazione);
     }
 
+
     private void openDetails(Segnalazione segnalazione) {
         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getActivity(), R.style.BottomSheetDialogTheme);
+
+        Utente utente = Utente.cerca(getContext());
+
         View bottomSheetView = LayoutInflater.from(getActivity()).inflate(R.layout.bottom_sheet_prenotazioni, getActivity().findViewById(R.id.bottomSheetContainer));
 
+        if((utente.getRuolo() == 1 || utente.getRuolo() == 3) && segnalazione.getNum() == 0){
+            bottomSheetView = LayoutInflater.from(getActivity()).inflate(R.layout.bottom_sheet_volontario, getActivity().findViewById(R.id.bottomSheetContainer));
+        }
 
         ImageCarousel carousel = bottomSheetView.findViewById(R.id.carousel);
         carousel.registerLifecycle(getViewLifecycleOwner());

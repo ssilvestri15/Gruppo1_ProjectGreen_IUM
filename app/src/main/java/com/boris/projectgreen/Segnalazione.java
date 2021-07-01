@@ -28,7 +28,7 @@ public class Segnalazione {
         this.citta = name;
         this.via = street;
         this.data = date;
-        this.num = n;
+        this.num = 0;
         this.img = Utils.getRandomImage();
 
     }
