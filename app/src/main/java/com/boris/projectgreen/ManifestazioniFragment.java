@@ -50,10 +50,9 @@ public class ManifestazioniFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 1 && resultCode == Activity.RESULT_OK){
-           if(data != null && data.getExtras().get("OK").equals("OK")){
-               if(rc != null && rc.getAdapter() != null) rc.getAdapter().notifyDataSetChanged();
-           }
+        if(requestCode == 1 && resultCode == 1){
+               if(rc != null && rc.getAdapter() != null)
+                   rc.getAdapter().notifyDataSetChanged();
         }
     }
 

@@ -34,32 +34,33 @@
     </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tlNome"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Nome">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtFieldNomeManifestazione"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tlInd"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Indirizzo">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtFieldIndirizzoManifestazione"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tlData"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -68,7 +69,6 @@
         app:endIconDrawable="@drawable/ic_baseline_calendar_24">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtFieldDataManifestazione"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="date"/>
@@ -76,15 +76,15 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tlOra"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Ora"
         app:endIconMode="custom"
-        app:endIconDrawable="@drawable/ic_baseline_time_24">>
+        app:endIconDrawable="@drawable/ic_baseline_time_24">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtFieldOraManifestazione"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="time"/>

@@ -1,6 +1,9 @@
 package com.boris.projectgreen;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -16,6 +19,9 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.google.android.material.progressindicator.LinearProgressIndicator;
@@ -86,7 +92,6 @@ public class ProfileFragment extends Fragment {
         int r = c.getRuolo();
 
 
-
         switch (r) {
 
             case 0:
@@ -95,8 +100,7 @@ public class ProfileFragment extends Fragment {
                 diventaVolontario = false;
                 btnDiventaVolontario.setVisibility(View.VISIBLE);
                 btnDiventaVolontario.setOnClickListener(v1 -> {
-                    BottomSheetDiventaVolontario bs = new BottomSheetDiventaVolontario();
-                    bs.show(getActivity().getSupportFragmentManager(), "HI");
+                    makeBottomSheet(c);
                 });
                 break;
 
@@ -108,8 +112,7 @@ public class ProfileFragment extends Fragment {
                 ruolo.setText("Dip. comunale");
                 btnDiventaVolontario.setVisibility(View.VISIBLE);
                 btnDiventaVolontario.setOnClickListener(v1 -> {
-                    BottomSheetDiventaVolontario bs = new BottomSheetDiventaVolontario();
-                    bs.show(getActivity().getSupportFragmentManager(), "HI");
+                    makeBottomSheet(c);
                 });
                 break;
 
@@ -135,6 +138,67 @@ public class ProfileFragment extends Fragment {
             });
 
         }, 100);
+
+    }
+
+    private void makeBottomSheet(Utente c) {
+
+        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getActivity(), R.style.BottomSheetDialogTheme);
+        View bottomSheetView = LayoutInflater.from(getActivity()).inflate(R.layout.bottom_sheet_diventavolontario, getActivity().findViewById(R.id.bottomSheetContainer));
+
+        MaterialCheckBox ccb1, ccb2, ccb3;
+        MaterialButton btnProponiti, okay, btn1;
+        TextView titolo, sottotiolo;
+        Dialog dialog;
+
+        ccb1 = bottomSheetView.findViewById(R.id.ccb1);
+        ccb2 = bottomSheetView.findViewById(R.id.ccb2);
+        ccb3 = bottomSheetView.findViewById(R.id.ccb3);
+        btnProponiti = bottomSheetView.findViewById(R.id.btnProponiti);
+        btnProponiti.setClickable(false);
+        btn1 = bottomSheetView.findViewById(R.id.btnDiventaVolontario);
+
+        ccb1.setOnClickListener(v -> {
+            btnProponiti.setEnabled(ccb2.isChecked() && ccb3.isChecked());
+        });
+
+        ccb2.setOnClickListener(v -> {
+            btnProponiti.setEnabled(ccb1.isChecked() && ccb3.isChecked());
+        });
+
+        ccb3.setOnClickListener(v -> {
+            btnProponiti.setEnabled(ccb2.isChecked() && ccb1.isChecked());
+        });
+
+        dialog = new Dialog(getActivity());
+        dialog.setContentView(R.layout.custom_alert_dialog);
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.setCancelable(false);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.animation;
+        okay = dialog.findViewById(R.id.btnOkay);
+        titolo = dialog.findViewById(R.id.txtTitolo);
+        titolo.setText("Grazie per esserti unito a noi!");
+
+        sottotiolo = dialog.findViewById(R.id.txtSottotitolo);
+        sottotiolo.setText("Il mondo ha bisogno di noi! A breve riceverai una email con le istruzioni da seguire.");
+
+        okay.setOnClickListener( v1 -> {
+            c.setRuolo(3);
+            Utente.salva(getContext(),c);
+            dialog.dismiss();
+            bottomSheetDialog.dismiss();
+            btnDiventaVolontario.setVisibility(View.GONE);
+            updateUI(btnDiventaVolontario, nomeUtente, citta, dataNascita, ruolo, livello, pbLivello, pbSegnalazioni, pbDonazioni, pbPartecipazioni, btnEdit);
+        });
+
+
+        btnProponiti.setOnClickListener(v -> {
+            dialog.show();
+        });
+
+        bottomSheetDialog.setContentView(bottomSheetView);
+        bottomSheetDialog.show();
 
     }
 

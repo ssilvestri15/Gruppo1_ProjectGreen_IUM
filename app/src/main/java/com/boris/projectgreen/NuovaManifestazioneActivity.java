@@ -8,42 +8,31 @@ import android.widget.ImageView;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 public class NuovaManifestazioneActivity extends AppCompatActivity {
-
-    private TextInputEditText txtNome, txtIndirizzo, txtData, txtOra;
-    private MaterialButton btnAggiungiFoto, btnPubblica;
-    private ImageView imgCopertina;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuova_manifestazione);
 
-        txtNome = findViewById(R.id.txtFieldNomeManifestazione);
-        txtIndirizzo = findViewById(R.id.txtFieldIndirizzoManifestazione);
-        txtData = findViewById(R.id.txtFieldDataManifestazione);
-        txtOra = findViewById(R.id.txtFieldOraManifestazione);
-        btnAggiungiFoto = findViewById(R.id.addFoto);
-        btnPubblica = findViewById(R.id.btnPubblicaManifestazione);
-        imgCopertina = findViewById(R.id.copertina);
+        TextInputLayout tlNome = findViewById(R.id.tlNome);
+        TextInputLayout tlInd = findViewById(R.id.tlInd);
+        TextInputLayout tlData = findViewById(R.id.tlData);
+        TextInputLayout tlOra = findViewById(R.id.tlOra);
 
-        Manifestazione m = new Manifestazione();
 
-        m.setTitolo(txtNome.getText().toString());
-        m.setLuogo(txtIndirizzo.getText().toString());
-        m.setData(txtData.getText().toString());
-        m.setOra(txtOra.getText().toString());
-        m.setPartecipanti(0);
-        m.setLike(false);
-        m.setPartecipa(false);
-        m.setImg(Utils.getRandomImage());
+        MaterialButton btnPubblicaManifestazione = findViewById(R.id.btnPubblicaManifestazione);
+        btnPubblicaManifestazione.setOnClickListener( v -> {
 
-        btnPubblica.setOnClickListener(v ->{
-            Utils.listaManifestazione.add(0, m);
-            Intent i = new Intent();
-            i.putExtra("OK", "OK");
-            setResult(1,i);
+            String nome = tlNome.getEditText().getText().toString();
+            String ind = tlInd.getEditText().getText().toString();
+            String data = tlData.getEditText().getText().toString();
+            String ora = tlOra.getEditText().getText().toString();
+
+            Utils.listaManifestazione.add(0,new Manifestazione(nome,ind,data,ora,0,false,false, Utils.getRandomImage()));
+            setResult(1);
             finish();
         });
 
