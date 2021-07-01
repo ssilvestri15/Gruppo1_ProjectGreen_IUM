@@ -31,6 +31,28 @@ public class Manifestazione implements Parcelable {
 
     }
 
+    protected Manifestazione(Parcel in) {
+        titolo = in.readString();
+        luogo = in.readString();
+        data = in.readString();
+        ora = in.readString();
+        partecipanti = in.readInt();
+        like = in.readByte() != 0;
+        partecipa = in.readByte() != 0;
+    }
+
+    public static final Creator<Manifestazione> CREATOR = new Creator<Manifestazione>() {
+        @Override
+        public Manifestazione createFromParcel(Parcel in) {
+            return new Manifestazione(in);
+        }
+
+        @Override
+        public Manifestazione[] newArray(int size) {
+            return new Manifestazione[size];
+        }
+    };
+
     public String getTitolo() {
         return titolo;
     }
@@ -102,6 +124,12 @@ public class Manifestazione implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-
+        dest.writeString(titolo);
+        dest.writeString(luogo);
+        dest.writeString(data);
+        dest.writeString(ora);
+        dest.writeInt(partecipanti);
+        dest.writeByte((byte) (like ? 1 : 0));
+        dest.writeByte((byte) (partecipa ? 1 : 0));
     }
 }

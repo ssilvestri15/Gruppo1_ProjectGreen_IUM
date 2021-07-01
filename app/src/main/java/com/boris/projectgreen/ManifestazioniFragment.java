@@ -50,15 +50,11 @@ public class ManifestazioniFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-       if(requestCode == 1 && resultCode == Activity.RESULT_OK){
+        if(requestCode == 1 && resultCode == Activity.RESULT_OK){
            if(data != null && data.getExtras().get("OK").equals("OK")){
-               if(rc != null && rc.getAdapter() != null){
-                   rc.getAdapter().notifyDataSetChanged();
-               }
+               if(rc != null && rc.getAdapter() != null) rc.getAdapter().notifyDataSetChanged();
            }
-
         }
-
     }
 
    private void openManifestazione() {
@@ -70,11 +66,10 @@ public class ManifestazioniFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_manifestazioni, container, false);
-        if( Utils.listaManifestazione == null){
-            Utils.listaManifestazione = makeListManifestazione();
-        }
-
         rc = v.findViewById(R.id.rcManifestazioni);
+
+        if( Utils.listaManifestazione == null) Utils.listaManifestazione = makeListManifestazione();
+
         rc.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         rc.setAdapter(new ManifestazioneAdapter(Utils.listaManifestazione, this::onManifestazioneClicked));
         return v;

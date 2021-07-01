@@ -62,10 +62,10 @@ public class BottomSheetDiventaVolontario extends BottomSheetDialogFragment {
         dialog.getWindow().getAttributes().windowAnimations = R.style.animation;
         okay = dialog.findViewById(R.id.btnOkay);
         titolo = dialog.findViewById(R.id.txtTitolo);
-        titolo.setText("GRAZIE!");
+        titolo.setText("Grazie per esserti unito a noi!");
 
         sottotiolo = dialog.findViewById(R.id.txtSottotitolo);
-        sottotiolo.setText("A breve riceverai una email con le istruzioni da seguire.");
+        sottotiolo.setText("Il mondo ha bisogno di noi! A breve riceverai una email con le istruzioni da seguire.");
 
         okay.setOnClickListener( v1 -> {
             dialog.dismiss();

@@ -27,6 +27,7 @@ public class ProfileFragment extends Fragment {
     private TextView nomeUtente, citta, dataNascita, ruolo, livello;
     private LinearProgressIndicator pbLivello;
     private CircularProgressIndicator pbSegnalazioni, pbDonazioni, pbPartecipazioni;
+    private boolean diventaVolontario = false;
 
     public ProfileFragment() {
     }
@@ -91,6 +92,7 @@ public class ProfileFragment extends Fragment {
             case 0:
 
                 ruolo.setText("Cittadino");
+                diventaVolontario = false;
                 btnDiventaVolontario.setVisibility(View.VISIBLE);
                 btnDiventaVolontario.setOnClickListener(v1 -> {
                     BottomSheetDiventaVolontario bs = new BottomSheetDiventaVolontario();

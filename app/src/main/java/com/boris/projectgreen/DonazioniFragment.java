@@ -52,7 +52,9 @@ public class DonazioniFragment extends Fragment {
         dialog.getWindow().getAttributes().windowAnimations = R.style.animation;
 
         titolo = dialog.findViewById(R.id.txtTitolo);
+        titolo.setText("Grazie per il supporto!");
         sottotiolo = dialog.findViewById(R.id.txtSottotitolo);
+        sottotiolo.setText("Il tuo aiuto per noi è importante. Il pianeta ha bisogno di noi!");
         okay = dialog.findViewById(R.id.btnOkay);
 
         okay.setOnClickListener( v1 -> {
