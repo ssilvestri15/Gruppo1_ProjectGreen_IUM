@@ -23,6 +23,7 @@ public class DonazioniFragment extends Fragment {
     private int selezione, importo;
     private Dialog dialog;
     private TextView titolo, sottotiolo;
+    private Spinner s;
     // 1=5, 2=10, 3=15, 4=custom
     public DonazioniFragment() {
         // Required empty public constructor
@@ -64,6 +65,7 @@ public class DonazioniFragment extends Fragment {
         btnCinque = v.findViewById(R.id.btn_cinque);
         btnCinque.setBackgroundColor(Color.GRAY);
         btnCinque.setOnClickListener(v1 -> {
+            btnPaga.setEnabled(true);
             btnCinque.setBackgroundColor(Color.parseColor("#3EA851"));
             btnDieci.setBackgroundColor(Color.GRAY);
             btnQuindici.setBackgroundColor(Color.GRAY);
@@ -76,6 +78,7 @@ public class DonazioniFragment extends Fragment {
         btnDieci = v.findViewById(R.id.btn_dieci);
         btnDieci.setBackgroundColor(Color.GRAY);
         btnDieci.setOnClickListener(v1 -> {
+            btnPaga.setEnabled(true);
             btnDieci.setBackgroundColor(Color.parseColor("#3EA851"));
             btnCinque.setBackgroundColor(Color.GRAY);
             btnQuindici.setBackgroundColor(Color.GRAY);
@@ -88,6 +91,7 @@ public class DonazioniFragment extends Fragment {
         btnQuindici = v.findViewById(R.id.btn_quindici);
         btnQuindici.setBackgroundColor(Color.GRAY);
         btnQuindici.setOnClickListener(v1 -> {
+            btnPaga.setEnabled(true);
             btnQuindici.setBackgroundColor(Color.parseColor("#3EA851"));
             btnCinque.setBackgroundColor(Color.GRAY);
             btnDieci.setBackgroundColor(Color.GRAY);
@@ -100,6 +104,7 @@ public class DonazioniFragment extends Fragment {
         btnPiu = v.findViewById(R.id.btn_Piu);
         btnPiu.setBackgroundColor(Color.GRAY);
         btnPiu.setOnClickListener(v1 -> {
+            btnPaga.setEnabled(true);
             btnPiu.setBackgroundColor(Color.parseColor("#3EA851"));
             btnMeno.setBackgroundColor(Color.parseColor("#3EA851"));
             btnImportoPers.setBackgroundColor(Color.parseColor("#3EA851"));
@@ -114,6 +119,7 @@ public class DonazioniFragment extends Fragment {
         btnMeno = v.findViewById(R.id.btn_Meno);
         btnMeno.setBackgroundColor(Color.GRAY);
         btnMeno.setOnClickListener(v1 -> {
+            btnPaga.setEnabled(true);
             btnPiu.setBackgroundColor(Color.parseColor("#3EA851"));
             btnMeno.setBackgroundColor(Color.parseColor("#3EA851"));
             btnImportoPers.setBackgroundColor(Color.parseColor("#3EA851"));
@@ -131,6 +137,12 @@ public class DonazioniFragment extends Fragment {
         btnImportoPers.setBackgroundColor(Color.GRAY);
         btnPaga = v.findViewById(R.id.btnPagaConPayPal);
         btnPaga.setOnClickListener(v13 -> dialog.show());
+
+        s = v.findViewById(R.id.spinnerAssociazioni);
+        ArrayAdapter<CharSequence> a = ArrayAdapter.createFromResource(getContext(), R.array.associazioni, android.R.layout.simple_spinner_dropdown_item);
+        a.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        s.setAdapter(a);
+
         return v;
     }
 }

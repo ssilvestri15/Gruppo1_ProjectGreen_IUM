@@ -21,6 +21,7 @@ public class NuovaManifestazioneActivity extends AppCompatActivity {
         TextInputLayout tlInd = findViewById(R.id.tlInd);
         TextInputLayout tlData = findViewById(R.id.tlData);
         TextInputLayout tlOra = findViewById(R.id.tlOra);
+        ImageView back = findViewById(R.id.backPress);
 
 
         MaterialButton btnPubblicaManifestazione = findViewById(R.id.btnPubblicaManifestazione);
@@ -31,9 +32,13 @@ public class NuovaManifestazioneActivity extends AppCompatActivity {
             String data = tlData.getEditText().getText().toString();
             String ora = tlOra.getEditText().getText().toString();
 
-            Utils.listaManifestazione.add(0,new Manifestazione(nome,ind,data,ora,0,false,false, Utils.getRandomImage()));
+            Utils.listaManifestazione.add(0,new Manifestazione(nome,ind,data,ora,0,false,false, Utils.getRandomImageManifestazioni()));
             setResult(1);
             finish();
+        });
+
+        back.setOnClickListener(v ->{
+            onBackPressed();
         });
 
     }

@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -48,6 +49,7 @@ public class ManifestazioneAdapter extends RecyclerView.Adapter<ManifestazioneAd
     public static class ViewHolder extends RecyclerView.ViewHolder{
 
         private TextView nome, luogo, data, ora, partecipanti;
+        private ImageView imgCop;
         private MaterialButton like, partecipa;
 
         public ViewHolder(@NonNull View itemView) {
@@ -60,6 +62,7 @@ public class ManifestazioneAdapter extends RecyclerView.Adapter<ManifestazioneAd
             partecipanti = itemView.findViewById(R.id.txtPartecipanti);
             like = itemView.findViewById(R.id.btnMiPiace);
             partecipa = itemView.findViewById(R.id.btnPartecipa);
+            imgCop = itemView.findViewById(R.id.imgCopertina);
 
 
         }
@@ -70,6 +73,7 @@ public class ManifestazioneAdapter extends RecyclerView.Adapter<ManifestazioneAd
             data.setText(m.getData());
             ora.setText(m.getOra());
             partecipanti.setText(m.getPartecipanti() + "");
+            imgCop.setImageResource(m.getImg().get(0));
             itemView.setOnClickListener(v -> listener.onItemClick(m));
 
             like.setOnClickListener(v -> {

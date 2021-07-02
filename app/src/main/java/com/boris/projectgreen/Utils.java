@@ -15,6 +15,16 @@ public class Utils {
         return temp;
     }
 
+    public static ArrayList<Integer> getRandomImageManifestazioni() {
+        ArrayList<Integer> temp = new ArrayList<>();
+        int[] array = new int[]{R.drawable.ambiente_1,R.drawable.ambiente_2,R.drawable.ambiente_3,R.drawable.ambiente_4,R.drawable.ambiente_5};
+        int x = new Random().nextInt(5)+1;
+        for (int i=0; i<x; i++){
+            temp.add(array[new Random().nextInt(5)]);
+        }
+        return temp;
+    }
+
     public static ArrayList<Segnalazione> listaSegnalazioni = null;
 
     public static ArrayList<Manifestazione> listaManifestazione = null;

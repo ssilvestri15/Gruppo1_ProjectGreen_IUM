@@ -6,6 +6,7 @@
         <item>Legambiente</item>
         <item>Viva la natura</item>
         <item>Mondo amico</item>
+        <item>Mondo Marcio</item>
     </string-array>
     <string name="title_activity_login2">LoginActivity2</string>
     <string name="prompt_email">Email</string>

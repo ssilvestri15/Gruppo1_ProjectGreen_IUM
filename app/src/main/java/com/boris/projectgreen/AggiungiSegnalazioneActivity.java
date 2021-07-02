@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
@@ -25,6 +26,7 @@ public class AggiungiSegnalazioneActivity extends AppCompatActivity {
         TextInputLayout tl1 = findViewById(R.id.outlinedTextField1);
         TextInputLayout tl2 = findViewById(R.id.outlinedTextField2);
         TextInputLayout tl3 = findViewById(R.id.outlinedTextField3);
+        ImageView back = findViewById(R.id.btnBack);
 
         btn.setOnClickListener( view -> {
 
@@ -47,6 +49,10 @@ public class AggiungiSegnalazioneActivity extends AppCompatActivity {
                 tl2.setError("Il campo è richiesto");
                 tl3.setError("Il campo è richiesto");
             }
+        });
+
+        back.setOnClickListener(v -> {
+            onBackPressed();
         });
 
     }

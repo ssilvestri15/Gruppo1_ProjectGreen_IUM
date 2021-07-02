@@ -137,8 +137,12 @@ public class HomeFragment extends Fragment {
                 } else dataP.setError("Il campo non può essere vuoto");
             });
         } else {
-            bottomSheetView = LayoutInflater.from(getActivity()).inflate(R.layout.bottom_sheet_prenotazioni, getActivity().findViewById(R.id.bottomSheetContainer));
 
+            bottomSheetView = LayoutInflater.from(getActivity()).inflate(R.layout.bottom_sheet_prenotazioni, getActivity().findViewById(R.id.bottomSheetContainer));
+            TextView rifiuti = bottomSheetView.findViewById(R.id.txt_rifiuti);
+            rifiuti.setText(segnalazione.getRifiuti());
+            TextView dataSegn = bottomSheetView.findViewById(R.id.txtdataSegnalazione);
+            dataSegn.setText("Segnalato il " + segnalazione.getData());
             TextView data = bottomSheetView.findViewById(R.id.data_details);
             data.setText(segnalazione.getDataPulizia());
             TextView ora = bottomSheetView.findViewById(R.id.ora_details);
@@ -166,6 +170,10 @@ public class HomeFragment extends Fragment {
                 btnNonPartecipa.setVisibility(View.VISIBLE);
                 btnNonPartecipa.setOnClickListener(v4 -> {
                     segnalazione.decrementaNum();
+                    if(segnalazione.getNum() == 0){
+                        segnalazione.setDataPulizia(null);
+                        segnalazione.setOraPulizia(null);
+                    }
                     titolo.setText("Sarà per la prossima!");
                     sottotiolo.setText("Non ti preoccupare, ci sono ancora tante battaglie per cui combattere! Alla prossima!");
                     dialog.show();

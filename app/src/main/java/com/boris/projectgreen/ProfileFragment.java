@@ -10,9 +10,11 @@ import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -150,7 +152,9 @@ public class ProfileFragment extends Fragment {
         MaterialButton btnProponiti, okay, btn1;
         TextView titolo, sottotiolo;
         Dialog dialog;
+        Spinner s;
 
+        s = bottomSheetView.findViewById(R.id.spinnerAssociazioni);
         ccb1 = bottomSheetView.findViewById(R.id.ccb1);
         ccb2 = bottomSheetView.findViewById(R.id.ccb2);
         ccb3 = bottomSheetView.findViewById(R.id.ccb3);
@@ -170,6 +174,11 @@ public class ProfileFragment extends Fragment {
             btnProponiti.setEnabled(ccb2.isChecked() && ccb1.isChecked());
         });
 
+        s = bottomSheetView.findViewById(R.id.spinnerAssociazioni);
+        ArrayAdapter<CharSequence> a = ArrayAdapter.createFromResource(getContext(), R.array.associazioni, android.R.layout.simple_spinner_dropdown_item);
+        a.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        s.setAdapter(a);
+
         dialog = new Dialog(getActivity());
         dialog.setContentView(R.layout.custom_alert_dialog);
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -184,7 +193,7 @@ public class ProfileFragment extends Fragment {
         sottotiolo.setText("Il mondo ha bisogno di noi! A breve riceverai una email con le istruzioni da seguire.");
 
         okay.setOnClickListener( v1 -> {
-            c.setRuolo(3);
+            c.setRuolo(1);
             Utente.salva(getContext(),c);
             dialog.dismiss();
             bottomSheetDialog.dismiss();

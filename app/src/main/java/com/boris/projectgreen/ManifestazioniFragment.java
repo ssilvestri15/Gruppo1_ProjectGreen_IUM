@@ -139,9 +139,9 @@ public class ManifestazioniFragment extends Fragment {
 
     private ArrayList<Manifestazione> makeListManifestazione(){
         ArrayList<Manifestazione> listaManifestazioni = new ArrayList<>();
-        listaManifestazioni.add(new Manifestazione("Sagra della Patata", "Via Piave, Avellino", "Mercoledì, 14 luglio 2021", "12:00", 45, false, false, Utils.getRandomImage()));
-        listaManifestazioni.add(new Manifestazione("Sagra della Cipolla", "Piazza Cavour, Avellino", "Venerdi, 23 luglio 2021", "15:00", 5, false, false, Utils.getRandomImage()));
-        listaManifestazioni.add(new Manifestazione("Sagra della Salsiccia", "Piazza Plebiscito, Picerno", "Mercoledì, 28 luglio 2021", "12:00", 30, false, false, Utils.getRandomImage()));
+        listaManifestazioni.add(new Manifestazione("Sagra della Patata", "Via Piave, Avellino", "Mercoledì, 14 luglio 2021", "12:00", 45, false, false, Utils.getRandomImageManifestazioni()));
+        listaManifestazioni.add(new Manifestazione("Sagra della Cipolla", "Piazza Cavour, Avellino", "Venerdi, 23 luglio 2021", "15:00", 5, false, false, Utils.getRandomImageManifestazioni()));
+        listaManifestazioni.add(new Manifestazione("Sagra della Salsiccia", "Piazza Plebiscito, Picerno", "Mercoledì, 28 luglio 2021", "12:00", 30, false, false, Utils.getRandomImageManifestazioni()));
 
         return listaManifestazioni;
     }

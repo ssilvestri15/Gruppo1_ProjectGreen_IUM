@@ -19,7 +19,8 @@
             android:textSize="34sp"
             android:textStyle="bold"
             android:gravity="center"
-            android:layout_margin="12sp"/>
+            android:layout_margin="12sp"
+            />
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
@@ -50,7 +51,8 @@
                         android:id="@+id/spinnerAssociazioni"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="18sp"/>
+                        android:layout_marginLeft="18sp"
+                       />
 
                 </LinearLayout>
 
@@ -165,7 +167,8 @@
             android:layout_marginTop="20sp"
             android:layout_gravity="center"
             android:backgroundTint="@color/dark_green"
-            android:drawableRight="@drawable/ic_baseline_payment_24" />
+            android:drawableRight="@drawable/ic_baseline_payment_24"
+            android:enabled="false"/>
 
     </LinearLayout>
 

@@ -72,7 +72,7 @@
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:background="@drawable/rounded_imageview"
-                        android:src="@drawable/carmine"
+                        android:src="@drawable/nefertiti"
                         android:scaleType="centerCrop"/>
 
                 </com.google.android.material.card.MaterialCardView>
