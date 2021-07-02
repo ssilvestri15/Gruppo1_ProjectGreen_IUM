@@ -9,6 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.card.MaterialCardView;
+
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
@@ -51,6 +53,8 @@ public class SegnalazioneAdapter extends RecyclerView.Adapter<SegnalazioneAdapte
         private TextView via;
         private TextView data;
         private TextView num;
+        private TextView tipo;
+        private MaterialCardView partecipanti;
         
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -60,6 +64,8 @@ public class SegnalazioneAdapter extends RecyclerView.Adapter<SegnalazioneAdapte
             via = itemView.findViewById(R.id.via_name);
             data = itemView.findViewById(R.id.data_name);
             num = itemView.findViewById(R.id.num_p);
+            tipo = itemView.findViewById(R.id.txt_tipo);
+            partecipanti = itemView.findViewById(R.id.mcv_partecipanti);
 
         }
 
@@ -69,8 +75,15 @@ public class SegnalazioneAdapter extends RecyclerView.Adapter<SegnalazioneAdapte
             imageView.setImageResource(segnalazione.getImgFirst());
             citta.setText(segnalazione.getCitta());
             via.setText(segnalazione.getVia());
-            data.setText(segnalazione.getData());
-            num.setText(segnalazione.getNum()+"");
+            if(segnalazione.getDataPulizia() != null) {
+                tipo.setText("Organizzata per:");
+                data.setText(segnalazione.getDataPulizia());
+                partecipanti.setVisibility(View.VISIBLE);
+                num.setText(segnalazione.getNum()+"");
+            } else {
+                data.setText(segnalazione.getData());
+                partecipanti.setVisibility(View.GONE);
+            }
 
             itemView.setOnClickListener( view -> {
                 listener.onItemClick(segnalazione);

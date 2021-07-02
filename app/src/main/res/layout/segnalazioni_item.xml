@@ -48,9 +48,13 @@
                 android:id="@+id/via_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Via dei boschi"
-                android:textSize="18sp"
-                android:textColor="@color/black"/>
+                android:text="Via dei boschi"/>
+
+            <TextView
+                android:id="@+id/txt_tipo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Data segnalazione:"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -79,6 +83,7 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/mcv_partecipanti"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:cardElevation="0dp"
@@ -110,8 +115,6 @@
                             android:textColor="@color/black"/>
 
                     </LinearLayout>
-
-
                 </com.google.android.material.card.MaterialCardView>
 
 

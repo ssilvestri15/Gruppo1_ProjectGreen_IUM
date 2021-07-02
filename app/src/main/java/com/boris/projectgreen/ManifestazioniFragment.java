@@ -2,6 +2,7 @@ package com.boris.projectgreen;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -13,8 +14,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -80,8 +83,57 @@ public class ManifestazioniFragment extends Fragment {
 
     private void openDetails(Manifestazione m){
         BottomSheetDialog bt = new BottomSheetDialog(getActivity(), R.style.BottomSheetDialogTheme);
-        View bsv = LayoutInflater.from(getActivity()).inflate(R.layout.bottom_sheet_manifestazione, getActivity().findViewById(R.id.bottomSheetContainerManifestazione));
-        bt.setContentView(bsv);
+        View view = LayoutInflater.from(getActivity()).inflate(R.layout.bottom_sheet_manifestazione, getActivity().findViewById(R.id.bottomSheetContainerManifestazione));
+
+        TextView titolo, luogo, data, ora, partecipanti;
+        MaterialButton like, partecipa;
+
+        titolo = view.findViewById(R.id.txtNomeManifestazioneBS);
+        luogo = view.findViewById(R.id.txtLuogoBS);
+        data = view.findViewById(R.id.txtDataBS);
+        ora = view.findViewById(R.id.txtOraBS);
+        partecipanti = view.findViewById(R.id.txtPartecipantiBS);
+        like = view.findViewById(R.id.btnMiPiaceBS);
+        partecipa = view.findViewById(R.id.btnPartecipaBS);
+
+        titolo.setText(m.getTitolo());
+        luogo.setText(m.getLuogo());
+        data.setText(m.getData());
+        ora.setText(m.getOra());
+        partecipanti.setText(m.getPartecipanti() + "");
+
+        like.setOnClickListener(v -> {
+            if(!m.isLike()) {
+                like.setTextColor(Color.parseColor("#3EA851"));
+                like.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_iconfinder_icon, 0, 0, 0);
+                m.setLike(true);
+            }
+            else {
+                like.setTextColor(Color.BLACK);
+                like.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_like_outline_24, 0, 0, 0);
+                m.setLike(false);
+            }
+        });
+
+        partecipa.setOnClickListener(v -> {
+            if(!m.isPartecipa()) {
+                partecipa.setTextColor(Color.parseColor("#3EA851"));
+                partecipa.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_star_outline_green_24, 0, 0, 0);
+                m.setPartecipanti(m.getPartecipanti() + 1);
+                partecipanti.setText(m.getPartecipanti() + "");
+                m.setPartecipa(true);
+                rc.getAdapter().notifyDataSetChanged();
+            } else {
+                partecipa.setTextColor(Color.BLACK);
+                partecipa.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_star_outline_24, 0, 0, 0);
+                m.setPartecipanti(m.getPartecipanti() - 1);
+                partecipanti.setText(m.getPartecipanti() + "");
+                m.setPartecipa(false);
+                rc.getAdapter().notifyDataSetChanged();
+            }
+        });
+
+        bt.setContentView(view);
         bt.show();
     }
 

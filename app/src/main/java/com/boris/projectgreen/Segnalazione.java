@@ -12,6 +12,8 @@ public class Segnalazione {
     private String via;
     private String data;
     private int num;
+    private String dataPulizia, oraPulizia, rifiuti;
+    private boolean partecipo;
     private ArrayList<Integer> img;
 
     public Segnalazione() {
@@ -23,6 +25,7 @@ public class Segnalazione {
         String name = getRandomName();
         String street = getRandomStreet();
         String date = getRandomDate();
+        String rif = getRandomRifiuti();
         int n = new Random().nextInt(98) + 1;
 
         this.citta = name;
@@ -30,6 +33,10 @@ public class Segnalazione {
         this.data = date;
         this.num = 0;
         this.img = Utils.getRandomImage();
+        this.rifiuti = rif;
+        this.dataPulizia = null;
+        this.oraPulizia = null;
+        this.partecipo = false;
 
     }
 
@@ -65,6 +72,26 @@ public class Segnalazione {
     public int getNum() {
         return num;
     }
+
+    public void incrementaNum() { this.num++; }
+
+    public void decrementaNum() { if(this.num > 0) this.num--; }
+
+    public String getDataPulizia() { return dataPulizia; }
+
+    public void setDataPulizia(String dataPulizia) { this.dataPulizia = dataPulizia; }
+
+    public String getOraPulizia() { return oraPulizia; }
+
+    public void setOraPulizia(String oraPulizia) { this.oraPulizia = oraPulizia; }
+
+    public boolean isPartecipa() { return this.partecipo; }
+
+    public void setPartecipo(boolean partecipo) { this.partecipo = partecipo; }
+
+    public String getRifiuti() { return this.rifiuti; }
+
+    public void setRifiuti(String rifiuti) { this.rifiuti = rifiuti; }
 
     public int getImgFirst() {
         return img.get(0);
@@ -191,6 +218,16 @@ public class Segnalazione {
                 "Vicenza",
                 "Viterbo"};
 
+        return array[new Random().nextInt(array.length)];
+    }
+
+    private String getRandomRifiuti() {
+        String[] array = new String[] {
+                "Plastica",
+                "Vetro",
+                "Ferro",
+                "Carta",
+                "Elettronici" };
         return array[new Random().nextInt(array.length)];
     }
 
