@@ -85,10 +85,20 @@
             android:layout_height="wrap_content"
             android:text="QUI CI SO I RIFIUTI"/>
 
-
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/txtGruppoNonOrganizzato"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Questo è un testo"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:visibility="gone"
+        android:layout_marginLeft="20sp"/>
+
     <LinearLayout
+        android:id="@+id/llDataOraRaccolta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"

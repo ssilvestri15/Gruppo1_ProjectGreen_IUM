@@ -38,7 +38,7 @@ public class AggiungiSegnalazioneActivity extends AppCompatActivity {
                 Date today = new Date();
                 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy", Locale.ITALY);
                 s3 = formatter.format(today);
-                Segnalazione s = new Segnalazione(s1, s2, s3, new Random().nextInt(98) + 1);
+                Segnalazione s = new Segnalazione(s1, s2, tl3.getEditText().getText().toString(), s3, 0);
                 Utils.listaSegnalazioni.add(0, s);
                 Intent i = new Intent();
                 i.putExtra("OK", "OK");

@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -139,50 +140,60 @@ public class HomeFragment extends Fragment {
         } else {
 
             bottomSheetView = LayoutInflater.from(getActivity()).inflate(R.layout.bottom_sheet_prenotazioni, getActivity().findViewById(R.id.bottomSheetContainer));
+            MaterialButton btnPartecipa = bottomSheetView.findViewById(R.id.btnPartecipaGV);
             TextView rifiuti = bottomSheetView.findViewById(R.id.txt_rifiuti);
-            rifiuti.setText(segnalazione.getRifiuti());
             TextView dataSegn = bottomSheetView.findViewById(R.id.txtdataSegnalazione);
             dataSegn.setText("Segnalato il " + segnalazione.getData());
-            TextView data = bottomSheetView.findViewById(R.id.data_details);
-            data.setText(segnalazione.getDataPulizia());
-            TextView ora = bottomSheetView.findViewById(R.id.ora_details);
-            ora.setText(segnalazione.getOraPulizia());
-            TextView partecipanti = bottomSheetView.findViewById(R.id.num_details);
-            partecipanti.setText(segnalazione.getNum() + "");
-            MaterialButton btnPartecipa = bottomSheetView.findViewById(R.id.btnPartecipaGV);
-            MaterialButton btnNonPartecipa = bottomSheetView.findViewById(R.id.btnNonPartecipaGV);
-            if(!segnalazione.isPartecipa()) {
-                btnPartecipa.setVisibility(View.VISIBLE);
-                btnNonPartecipa.setVisibility(View.GONE);
-                btnPartecipa.setOnClickListener(v2 -> {
-                    segnalazione.incrementaNum();
-                    titolo.setText("Grazie per esserti unito!");
-                    sottotiolo.setText("L'ambiente ha bisogno di gente come te per poter rinascere. Grazie per il tuo aiuto!");
-                    dialog.show();
-                    okay.setOnClickListener(v3 -> {
-                        dialog.dismiss();
-                        bottomSheetDialog.dismiss();
-                        rv.getAdapter().notifyDataSetChanged();
+            rifiuti.setText(segnalazione.getRifiuti());
+            if(segnalazione.getDataPulizia() != null) {
+                TextView data = bottomSheetView.findViewById(R.id.data_details);
+                data.setText(segnalazione.getDataPulizia());
+                TextView ora = bottomSheetView.findViewById(R.id.ora_details);
+                ora.setText(segnalazione.getOraPulizia());
+                TextView partecipanti = bottomSheetView.findViewById(R.id.num_details);
+                partecipanti.setText(segnalazione.getNum() + "");
+
+                MaterialButton btnNonPartecipa = bottomSheetView.findViewById(R.id.btnNonPartecipaGV);
+                if(!segnalazione.isPartecipa()) {
+                    btnPartecipa.setVisibility(View.VISIBLE);
+                    btnNonPartecipa.setVisibility(View.GONE);
+                    btnPartecipa.setOnClickListener(v2 -> {
+                        segnalazione.incrementaNum();
+                        titolo.setText("Grazie per esserti unito!");
+                        sottotiolo.setText("L'ambiente ha bisogno di gente come te per poter rinascere. Grazie per il tuo aiuto!");
+                        dialog.show();
+                        okay.setOnClickListener(v3 -> {
+                            dialog.dismiss();
+                            bottomSheetDialog.dismiss();
+                            rv.getAdapter().notifyDataSetChanged();
+                        });
                     });
-                });
+                } else {
+                    btnPartecipa.setVisibility(View.GONE);
+                    btnNonPartecipa.setVisibility(View.VISIBLE);
+                    btnNonPartecipa.setOnClickListener(v4 -> {
+                        segnalazione.decrementaNum();
+                        if(segnalazione.getNum() == 0){
+                            segnalazione.setDataPulizia(null);
+                            segnalazione.setOraPulizia(null);
+                        }
+                        titolo.setText("Sarà per la prossima!");
+                        sottotiolo.setText("Non ti preoccupare, ci sono ancora tante battaglie per cui combattere! Alla prossima!");
+                        dialog.show();
+                        okay.setOnClickListener(v3 -> {
+                            dialog.dismiss();
+                            bottomSheetDialog.dismiss();
+                            rv.getAdapter().notifyDataSetChanged();
+                        });
+                    });
+                }
             } else {
-                btnPartecipa.setVisibility(View.GONE);
-                btnNonPartecipa.setVisibility(View.VISIBLE);
-                btnNonPartecipa.setOnClickListener(v4 -> {
-                    segnalazione.decrementaNum();
-                    if(segnalazione.getNum() == 0){
-                        segnalazione.setDataPulizia(null);
-                        segnalazione.setOraPulizia(null);
-                    }
-                    titolo.setText("Sarà per la prossima!");
-                    sottotiolo.setText("Non ti preoccupare, ci sono ancora tante battaglie per cui combattere! Alla prossima!");
-                    dialog.show();
-                    okay.setOnClickListener(v3 -> {
-                        dialog.dismiss();
-                        bottomSheetDialog.dismiss();
-                        rv.getAdapter().notifyDataSetChanged();
-                    });
-                });
+                LinearLayout ll = bottomSheetView.findViewById(R.id.llDataOraRaccolta);
+                TextView txt = bottomSheetView.findViewById(R.id.txtGruppoNonOrganizzato);
+                txt.setVisibility(View.VISIBLE);
+                ll.setVisibility(View.GONE);
+                txt.setText("Gruppo volontari non organizzato.");
+                btnPartecipa.setEnabled(false);
             }
         }
 

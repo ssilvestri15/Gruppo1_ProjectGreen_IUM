@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -46,7 +47,7 @@ public class ManifestazioniFragment extends Fragment {
             btnAdd.setOnClickListener( v -> {
                 openManifestazione();
             });
-        }
+        } else ((MainActivity) getActivity()).hideNavBar(true);
     }
 
 
@@ -86,6 +87,7 @@ public class ManifestazioniFragment extends Fragment {
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.bottom_sheet_manifestazione, getActivity().findViewById(R.id.bottomSheetContainerManifestazione));
 
         TextView titolo, luogo, data, ora, partecipanti;
+        ImageView imgCopertina;
         MaterialButton like, partecipa;
 
         titolo = view.findViewById(R.id.txtNomeManifestazioneBS);
@@ -94,12 +96,14 @@ public class ManifestazioniFragment extends Fragment {
         ora = view.findViewById(R.id.txtOraBS);
         partecipanti = view.findViewById(R.id.txtPartecipantiBS);
         like = view.findViewById(R.id.btnMiPiaceBS);
+        imgCopertina = view.findViewById(R.id.imgCopertinaBS);
         partecipa = view.findViewById(R.id.btnPartecipaBS);
 
         titolo.setText(m.getTitolo());
         luogo.setText(m.getLuogo());
         data.setText(m.getData());
         ora.setText(m.getOra());
+        imgCopertina.setImageResource(m.getImg().get(0));
         partecipanti.setText(m.getPartecipanti() + "");
 
         like.setOnClickListener(v -> {

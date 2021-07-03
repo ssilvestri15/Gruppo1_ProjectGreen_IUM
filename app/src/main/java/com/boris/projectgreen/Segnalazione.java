@@ -48,12 +48,16 @@ public class Segnalazione {
         this.img = img;
     }
 
-    public Segnalazione(String citta, String via, String data, int num) {
+    public Segnalazione(String citta, String via, String rifiuti, String data, int num) {
         this.citta = citta;
         this.via = via;
+        this.rifiuti = rifiuti;
         this.data = data;
         this.num = num;
         this.img = Utils.getRandomImage();
+        this.dataPulizia = null;
+        this.oraPulizia = null;
+        this.partecipo = false;
     }
 
 
