@@ -63,6 +63,13 @@ This project is licensed under the [MIT License](LICENSE.md) - see the LICENSE.m
 
 If you have any questions or feedback, feel free to reach out to us.
 
+## Development Team
+
+- [Matteo Ercolino](https://github.com/matthew-2000)
+- [Simone Silvestri](https://github.com/ssilvestri15)
+- [Carmine Pastore](https://github.com/pastore99)
+- [Nicola Laurino](https://github.com/NicoUni99997)
+
 ## 
 Together, let's make the world a greener place with Project Green! 🌍💚
 
